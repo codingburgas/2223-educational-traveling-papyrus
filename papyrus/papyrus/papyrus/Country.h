@@ -14,7 +14,7 @@ public:
 	void BuyOffice();
 	void SelectOffice();
 private:
-	bool isClicked;
+	bool isClicked = false;
 };
 
 class Germany : public Country
