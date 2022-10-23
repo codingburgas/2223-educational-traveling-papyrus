@@ -12,5 +12,6 @@ int main(void)
     {
         game.Tick();
     }
+
     return 0;
 }
