@@ -7,7 +7,7 @@
 7|barcelona|food
 8|lisbon|car
 9|london|car
-10|manchester|airpump
+10|manchester|machinery
 11|dublin|machinery
 12|reykjavik|fish
 13|oslo|oil
