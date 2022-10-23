@@ -9,7 +9,7 @@
 9|uk|london|car
 10|uk|manchester|machinery
 11|ireland|dublin|machinery
-12|iceland|reykjavik|fish
+12|iceland|reykjavik|food
 13|norway|oslo|oil
 14|sweden|stockholm|car
 15|denmark|copenhagen|food
