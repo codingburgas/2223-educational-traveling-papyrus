@@ -1,9 +1,9 @@
 1|germany|berlin|car
 2|germany|frankfurt|food
-3|germany|hamburg|steel
+3|germany|hamburg|machinery
 4|france|paris|car
-5|france|lyon|pharmaceutical
-6|spain|madrid|pharmaceutical
+5|france|lyon|food
+6|spain|madrid|food
 7|spain|barcelona|food
 8|portugal|lisbon|car
 9|uk|london|car
@@ -27,4 +27,4 @@
 27|finland|helsinki|machinery
 29|baltic|riga|machinery
 30|italy|rome|machinery
-31|italy|milan|pharmaceutical
+31|italy|milan|car
