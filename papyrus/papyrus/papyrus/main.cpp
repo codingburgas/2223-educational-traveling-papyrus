@@ -2,7 +2,7 @@
 
 int main(void)
 {
-
+    // Open a window
     const int screenWidth = 800;
     const int screenHeight = 450;
 
@@ -13,5 +13,14 @@ int main(void)
         game.Tick();
     }
 
-    return 0;
+    printCountryNames();
+    
+    // Enter a number to select country
+    std::cout << "Enter a number: ";
+
+    int num;
+
+    std::cin >> num;
+    
+    selectCountry(num);
 }
