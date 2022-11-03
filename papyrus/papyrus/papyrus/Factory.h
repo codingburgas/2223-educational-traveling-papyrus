@@ -1,9 +1,9 @@
 #pragma once
 
-class Office
+class Factory
 {
 public:
-	Office();
+	Factory();
 
 private:
 
