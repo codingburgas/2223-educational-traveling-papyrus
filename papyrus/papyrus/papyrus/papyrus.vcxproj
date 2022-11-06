@@ -151,7 +151,6 @@
     <ClCompile Include="Country.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Stock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Country.h" />

@@ -16,6 +16,3 @@ private:
 	void Update();
 	void Draw();
 };
-
-void printCountryNames();
-std::string selectCountry(int num);
