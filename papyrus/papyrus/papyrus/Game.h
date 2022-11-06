@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include <assert.h>
 #include <iostream>
+#include "Bank.h"
 
 class Game
 {
@@ -12,6 +13,7 @@ public:
 
 	bool GameShouldClose() const;
 	void Tick();
+
 private:
 	void Update();
 	void Draw();

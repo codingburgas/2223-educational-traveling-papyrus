@@ -24,6 +24,15 @@
     <ClCompile Include="Country.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -32,10 +41,16 @@
     <ClInclude Include="Country.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stock.h">
+    <ClInclude Include="Bank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Office.h">
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
