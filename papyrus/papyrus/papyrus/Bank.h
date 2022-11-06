@@ -10,15 +10,15 @@ public:
 	void increaseBalance();
 	void increaseIncome();
 
-	void setBalance(double balance);
-	double getBalance();
+	void setBalance(int balance);
+	int getBalance();
 
-	void setIncome(double income);
-	double getIncome();
+	void setIncome(int income);
+	int getIncome();
 
 private:
 	Bank();
 	
-	double balance = 0; //needs to be changed
-	double income = 1;
+	int balance = 0; //needs to be changed
+	int income = 1;
 };

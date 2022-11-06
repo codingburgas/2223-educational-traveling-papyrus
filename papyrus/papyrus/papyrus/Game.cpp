@@ -29,8 +29,7 @@ void Game::Tick()
 void Game::Update()
 {
 	Bank& bank = Bank::getInstance();
-	bank.increaseBalance();
-	std::cout << bank.getBalance();
+	
 }
 
 void Game::Draw()

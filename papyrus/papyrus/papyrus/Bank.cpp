@@ -1,5 +1,4 @@
 #include "Bank.h"
-#include <windows.h>
 
 Bank::Bank()
 {
@@ -14,7 +13,6 @@ Bank& Bank::getInstance()
 
 void Bank::increaseBalance()
 {
-	Sleep(700);
 	balance += income;
 }
 
@@ -22,22 +20,22 @@ void Bank::increaseIncome()
 {
 }
 
-void Bank::setBalance(double balance)
+void Bank::setBalance(int balance)
 {
 	this->balance = balance;
 }
 
-double Bank::getBalance()
+int Bank::getBalance()
 {
 	return this->balance;
 }
 
-void Bank::setIncome(double income)
+void Bank::setIncome(int income)
 {
 	this->income = income;
 }
 
-double Bank::getIncome()
+int Bank::getIncome()
 {
 	return this->income;
 }

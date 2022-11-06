@@ -12,7 +12,6 @@ int main()
 
     while (!game.GameShouldClose())
     {
-        
         DrawTexture(menuTexture, 0, 0, RAYWHITE);
         game.Tick();
     }

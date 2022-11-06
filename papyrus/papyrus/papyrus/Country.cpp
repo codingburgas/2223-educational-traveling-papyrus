@@ -1,26 +1,5 @@
 #include "Country.h"
 
-Country::Country(std::string Name, Image image, std::vector<std::string> offices, std::vector<std::string> exports)
+Country::Country(std::string name, bool inEU, std::string currency, std::vector<Factory> factories)
 {
-
-}
-
-void Country::DrawCountry()
-{
-
-}
-
-void Country::UpgradeOffices()
-{
-
-}
-
-void Country::BuyOffice()
-{
-
-}
-
-void Country::SelectOffice()
-{
-
 }

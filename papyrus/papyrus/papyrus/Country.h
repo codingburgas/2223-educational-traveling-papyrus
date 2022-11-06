@@ -2,35 +2,23 @@
 #include <string>
 #include <raylib.h>
 #include <vector>
+#include "Factory.h"
 
 
 class Country
 {
 public:
-	Country(std::string Name, Image sprite, std::vector<std::string> offices, std::vector<std::string> exports);
+	Country(std::string name, bool inEU, std::string currency, std::vector<Factory> factories);
 
-	void DrawCountry();
-	void UpgradeOffices();
-	void BuyOffice();
-	void SelectOffice();
 private:
-	bool isClicked = false;
+	std::string name;
+	bool isEU;
+	std::string currency;
 };
 
-class Germany : public Country
-{
-public:
-	Germany() : Country(Name, sprite, offices, exports)
-	{
+Country Germany("Germany", true, "euro", { {"Berlin", 10000, 7000}, {"Frankfurt", 9000, 7000}});
 
-	}
-private:
-	std::string Name = "Germany";
-	Image sprite;
-	std::vector<std::string> offices{"Berlin", "Frankfurt", "Hamburg"};
-	std::vector<std::string> exports{ "car", "food", "steel" };
-};
-
+/*
 class France : public Country
 {
 public:
@@ -352,3 +340,4 @@ private:
 	std::vector<std::string> offices{ "Rome", "Milan"};
 	std::vector<std::string> exports{ "machinery", "pharmaceutical"};
 };
+*/
