@@ -29,10 +29,41 @@ void Game::Tick()
 void Game::Update()
 {
 	Bank& bank = Bank::getInstance();
-	
+
 }
 
 void Game::Draw()
 {
 
+}
+
+void drawCities(Vector2 coordinates[])
+{
+
+	for (int i = 0; i < 30; i++)
+	{
+		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
+		DrawCircle(coordinates[i].x, coordinates[i].y, 6, RAYWHITE);
+	}
+}
+
+bool isCityClicked(Vector2 coordinates[])
+{
+	Vector2 mousePos;
+
+	mousePos.x = GetMouseX();
+	mousePos.y = GetMouseY();
+
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+	{
+		for (int i = 0; i < 30; i++)
+		{
+			if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	return false;
 }

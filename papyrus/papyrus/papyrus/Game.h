@@ -18,3 +18,7 @@ private:
 	void Update();
 	void Draw();
 };
+
+void drawCities(Vector2 coordinates[]);
+
+bool isCityClicked(Vector2 coordinates[]);
