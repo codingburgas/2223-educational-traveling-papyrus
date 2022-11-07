@@ -25,6 +25,6 @@
 25|romania|bucharest|car|12000
 26|czechia|prague|car|12000
 27|finland|helsinki|machinery|2000
-29|baltic|riga|machinery|3000
-30|italy|rome|machinery|2500
-31|italy|milan|car|16000
+28|baltic|riga|machinery|3000
+29|italy|rome|machinery|2500
+30|italy|milan|car|16000
