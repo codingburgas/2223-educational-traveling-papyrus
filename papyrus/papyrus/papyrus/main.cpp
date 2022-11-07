@@ -7,6 +7,8 @@ int main()
     const int screenHeight = 1080;
 	Game game(screenWidth, screenHeight, 60, "GEOGRAPHY");
 
+	bool isMenuClosed = false;
+
 	// Times clicked
 	int score = 0;
 
@@ -45,25 +47,41 @@ int main()
 	};
 
 	// Background texture
-    Texture2D menuTexture = LoadTexture("../Images/menu.png");
+    Texture2D map = LoadTexture("../Images/map.png");
+	Texture2D menu = LoadTexture("../Images/menu.png");
 
     while (!game.GameShouldClose())
     {
-		// Displays background texture
-        DrawTexture(menuTexture, 0, 0, RAYWHITE);
-
-		// Place the cites on the map
-		drawCities(coordinates);
-
-		// Check if any of the cities are clickes
-		if (isCityClicked(coordinates))
+		if (!isMenuClosed)
 		{
-			score++;
+			// Displays background texture
+			DrawTexture(menu, 0, 0, RAYWHITE);
+
+			if (IsKeyPressed(KEY_SPACE))
+			{
+				isMenuClosed = true;
+				UnloadTexture(menu);
+			}
+		}
+		else
+		{
+			
+			DrawTexture(map, 0, 0, RAYWHITE);
+
+			// Place the cites on the map
+			drawCities(coordinates);
+
+			// Check if any of the cities are clickes
+			if (isCityClicked(coordinates))
+			{
+				score++;
+			}
+
+			// Display score
+			DrawText(TextFormat("%i", score), 1090, 185, 40, RAYWHITE);
+
 		}
 
-		// Display score
-		DrawText(TextFormat("%i", score), 1090, 185, 40, RAYWHITE);
-
-        game.Tick();
+		game.Tick();
     }
 }
