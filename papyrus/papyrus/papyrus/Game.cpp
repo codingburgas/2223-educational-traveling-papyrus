@@ -39,7 +39,7 @@ void Game::Draw()
 
 void drawCities(Vector2 coordinates[])
 {
-
+	// Display the cities as white dots with black borders
 	for (int i = 0; i < 30; i++)
 	{
 		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
@@ -51,11 +51,14 @@ bool isCityClicked(Vector2 coordinates[])
 {
 	Vector2 mousePos;
 
+	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
 
+	// Check if the left mouse button is clicked
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
+		// Check if mouse collides with the cities
 		for (int i = 0; i < 30; i++)
 		{
 			if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))

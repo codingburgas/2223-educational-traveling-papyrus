@@ -2,12 +2,15 @@
 
 int main()
 {
-    // Open a window
+	// Open a window
     const int screenWidth = 1920;
     const int screenHeight = 1080;
+	Game game(screenWidth, screenHeight, 60, "GEOGRAPHY");
 
+	// Times clicked
 	int score = 0;
 
+	// Coordinates for all the cities
 	Vector2 coordinates[30] = {
 	{560,560},
 	{490,625},
@@ -41,20 +44,26 @@ int main()
 	{497,744}
 	};
 
-    Game game(screenWidth, screenHeight, 60, "GEOGRAPHY");
-
+	// Background texture
     Texture2D menuTexture = LoadTexture("../Images/menu.png");
 
     while (!game.GameShouldClose())
     {
+		// Displays background texture
         DrawTexture(menuTexture, 0, 0, RAYWHITE);
+
+		// Place the cites on the map
 		drawCities(coordinates);
+
+		// Check if any of the cities are clickes
 		if (isCityClicked(coordinates))
 		{
 			score++;
 		}
-		DrawText(TextFormat("%i", score), 1090, 185, 40, RAYWHITE);
-        game.Tick();
 
+		// Display score
+		DrawText(TextFormat("%i", score), 1090, 185, 40, RAYWHITE);
+
+        game.Tick();
     }
 }
