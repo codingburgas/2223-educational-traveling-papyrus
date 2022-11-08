@@ -83,7 +83,7 @@ int main()
 
 			// Display score
 			DrawText(TextFormat("%i", score), 1090, 185, 40, RAYWHITE);
-
+			DrawText(TextFormat("%i", bank.getBalance()), 1090, 400, 40, RAYWHITE);
 		}
 
 
