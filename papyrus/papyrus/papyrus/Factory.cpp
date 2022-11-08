@@ -13,11 +13,14 @@ Factory::Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product
 
 void Factory::buyFactory()
 {
+	// Check if factory is owned 
 	if (!this->isOwned)
 	{
 		Bank& bank = Bank::getInstance();
 		bank.setBalance(bank.getBalance() - this->buyPrice);
 		this->isOwned = true;
+
+		// Increase the income with the price of the product
 		bank.setIncome(product.getSellingPrice() - product.getProductionCost());
 	}
 	else

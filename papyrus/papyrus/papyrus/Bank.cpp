@@ -5,17 +5,20 @@ Bank::Bank()
 
 }
 
+// Create a static instace of bank
 Bank& Bank::getInstance()
 {
 	static Bank bank;
 	return bank;
 }
 
+// Increase balance with income
 void Bank::increaseBalance()
 {
 	balance += income;
 }
 
+// Increase the income with set amount
 void Bank::increaseIncome(int incomeIn)
 {
 	income += incomeIn;

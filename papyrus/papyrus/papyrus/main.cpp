@@ -50,6 +50,7 @@ int main()
 	Texture2D map = LoadTexture("../Images/map.png");
 	Texture2D menu = LoadTexture("../Images/menu.png");
 
+	// Set money tick 1 second
 	int moneyTick = 1000;
 	Bank& bank = Bank::getInstance();
 
@@ -86,7 +87,7 @@ int main()
 		}
 
 
-
+		// Countdown money tick until it hits zero
 		if (moneyTick == 0)
 		{
 			bank.increaseBalance();
