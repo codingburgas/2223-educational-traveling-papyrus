@@ -1,5 +1,7 @@
 #include "Game.h"
 
+bool isMenuClosed = false;
+
 Game::Game(int width, int height, int fps, std::string title)
 {
 	assert(!GetWindowHandle());	//If assertion triggers : Window is already opened
@@ -19,11 +21,11 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick()
+void Game::Tick(Texture2D menu, Texture2D map)
 {
 	BeginDrawing();
 	Update();
-	Draw();
+	Draw(menu, map);
 	EndDrawing();
 }
 
@@ -37,9 +39,33 @@ void Game::Update()
 	}
 }
 
-void Game::Draw()
+void Game::Draw(Texture2D menu, Texture2D map)
 {
 	Bank& bank = Bank::getInstance();
+
+	if (!isMenuClosed)
+	{
+		// Display menu
+		DrawTexture(menu, 0, 0, RAYWHITE);
+
+		if (IsKeyPressed(KEY_SPACE))
+		{
+			isMenuClosed = true;
+			UnloadTexture(menu);
+		}
+	}
+	if (isMenuClosed)
+	{
+
+		//Display map
+		DrawTexture(map, 0, 0, RAYWHITE);
+
+		// Place the cites on the map
+		drawCities(coordinates);
+		
+		// Display score
+		DrawText(TextFormat("%i", bank.getBalance()), 1090, 400, 40, RAYWHITE);
+	}
 }
 
 void drawCities(Vector2 coordinates[])

@@ -13,11 +13,11 @@ public:
 	~Game() noexcept;
 
 	bool GameShouldClose() const;
-	void Tick();
+	void Tick(Texture2D menu, Texture2D map);
 
 private:
 	void Update();
-	void Draw();
+	void Draw(Texture2D menu, Texture2D map);
 };
 
 void drawCities(Vector2 coordinates[]);
