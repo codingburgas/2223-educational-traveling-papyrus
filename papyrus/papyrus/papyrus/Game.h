@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <iostream>
 #include "Bank.h"
+#include "Factory.h"
 
 class Game
 {

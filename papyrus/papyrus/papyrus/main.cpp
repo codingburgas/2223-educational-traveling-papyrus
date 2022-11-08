@@ -3,8 +3,8 @@
 int main()
 {
 	// Open a window
-    const int screenWidth = 1920;
-    const int screenHeight = 1080;
+	const int screenWidth = 1920;
+	const int screenHeight = 1080;
 	Game game(screenWidth, screenHeight, 60, "GEOGRAPHY");
 
 	bool isMenuClosed = false;
@@ -47,11 +47,14 @@ int main()
 	};
 
 	// Background texture
-    Texture2D map = LoadTexture("../Images/map.png");
+	Texture2D map = LoadTexture("../Images/map.png");
 	Texture2D menu = LoadTexture("../Images/menu.png");
 
-    while (!game.GameShouldClose())
-    {
+	int moneyTick = 1000;
+	Bank& bank = Bank::getInstance();
+
+	while (!game.GameShouldClose())
+	{
 		if (!isMenuClosed)
 		{
 			// Displays background texture
@@ -65,7 +68,7 @@ int main()
 		}
 		else
 		{
-			
+
 			DrawTexture(map, 0, 0, RAYWHITE);
 
 			// Place the cites on the map
@@ -82,6 +85,18 @@ int main()
 
 		}
 
+
+
+		if (moneyTick == 0)
+		{
+			bank.increaseBalance();
+			moneyTick = 1000;
+		}
+		else
+		{
+			moneyTick -= 1;
+		}
+
 		game.Tick();
-    }
+	}
 }

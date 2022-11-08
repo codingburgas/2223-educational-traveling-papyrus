@@ -2,13 +2,13 @@
 #include <string>
 #include <raylib.h>
 #include <vector>
-#include "Factory.h"
+//#include "Factory.h"
 
 
 class Country
 {
 public:
-	Country(std::string name, bool inEU, std::string currency, std::vector<Factory> factories);
+	Country(std::string name, bool inEU, std::string currency/*, std::vector<Factory> factories*/);
 
 private:
 	std::string name;
@@ -16,6 +16,7 @@ private:
 	std::string currency;
 };
 
+/*
 Country Germany("Germany", true, "euro", { {"Berlin", 50000, 70000}, {"Frankfurt", 30000, 50000}, {"Hamburg", 25000, 40000} });
 Country France("France", true, "euro", { {"Paris", 50000, 70000}, {"Lyon", 30000, 50000} });
 Country Spain("Spain", true, "euro", { {"Madrid", 25000, 40000}, {"Barcelona", 20000, 40000} });
@@ -39,4 +40,4 @@ Country Romania("Romania", true, "leu", { {"Bucharest", 15000, 30000} });
 Country Czechia("Czechia", true, "cheKrona", { {"Prague", 20000, 40000} });
 Country Finland("Finland", true, "euro", { {"Helsinki", 10000, 20000} });
 Country Baltic("Baltic", true, "euro", { {"Riga", 10000, 20000} });
-Country Italy("Italy", true, "euro", { {"Rome", 9000, 18000}, {"Milan", 30000, 60000 }});
+Country Italy("Italy", true, "euro", { {"Rome", 9000, 18000}, {"Milan", 30000, 60000 }});*/

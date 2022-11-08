@@ -4,11 +4,21 @@
 class Product
 {
 public:
-	Product();
+	Product(std::string typeIn, int sellingPriceIn, int productionCostIn);
 
+	void setType(std::string type);
+	std::string getType();
+
+	void setSellingPrice(int sellingPrice);
+	int getSellingPrice();
+
+	void setProductionCost(int productionCost);
+	int getProductionCost();
 
 private:
 	std::string type;
-	double sellingPrice;
-	double productionCost;
+	int sellingPrice;
+	int productionCost;
 };
+
+static Product car("car", 500, 300);

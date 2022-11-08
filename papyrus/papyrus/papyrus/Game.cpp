@@ -31,11 +31,16 @@ void Game::Update()
 {
 	Bank& bank = Bank::getInstance();
 
+	if (IsKeyDown(KEY_ENTER))
+	{
+		berlin.buyFactory();
+	}
 }
 
 void Game::Draw()
 {
-
+	Bank& bank = Bank::getInstance();
+	DrawText(TextFormat("%i", bank.getBalance()), 1090, 400, 40, RAYWHITE);
 }
 
 void drawCities(Vector2 coordinates[])

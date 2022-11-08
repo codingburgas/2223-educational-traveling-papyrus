@@ -16,8 +16,9 @@ void Bank::increaseBalance()
 	balance += income;
 }
 
-void Bank::increaseIncome()
+void Bank::increaseIncome(int incomeIn)
 {
+	income += incomeIn;
 }
 
 void Bank::setBalance(int balance)

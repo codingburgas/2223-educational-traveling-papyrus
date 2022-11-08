@@ -8,7 +8,7 @@ public:
 
 	static Bank& getInstance();
 	void increaseBalance();
-	void increaseIncome();
+	void increaseIncome(int incomeIn);
 
 	void setBalance(int balance);
 	int getBalance();
@@ -18,7 +18,7 @@ public:
 
 private:
 	Bank();
-	
-	int balance = 0; //needs to be changed
-	int income = 1;
+
+	int balance = 1000; //needs to be changed
+	int income = 0;
 };
