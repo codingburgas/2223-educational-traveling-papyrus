@@ -21,11 +21,11 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick(Texture2D menu, Texture2D map, std::vector<Factory> factories, std::vector<Vector2> coordinates)
+void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Factory> factories, std::vector<Vector2> coordinates)
 {
 	BeginDrawing();
 	Update(coordinates, factories);
-	Draw(menu, map, coordinates);
+	Draw(menu, map,button_exit, button_play, coordinates);
 	EndDrawing();
 }
 
@@ -45,6 +45,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory> factori
 			{
 				factories.at(i).buyFactory();
 			}
+
 		}
 	}
 
@@ -60,19 +61,41 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory> factori
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map, std::vector<Vector2> coordinates)
+void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Vector2> coordinates)
 {
+	Vector2 mousePos;
+
+	// Get the positions of the mouse
+	mousePos.x = GetMouseX();
+	mousePos.y = GetMouseY();
+
 	Bank& bank = Bank::getInstance();
 
 	if (!isMenuClosed)
 	{
 		// Display menu
 		DrawTexture(menu, 0, 0, RAYWHITE);
+		DrawTexture(button_exit, 400, 650, RAYWHITE);
+		DrawTexture(button_play, 400, 500, RAYWHITE);
 
-		if (IsKeyPressed(KEY_SPACE))
+		Rectangle play_button = { 400, 500, 207, 92 };
+		Rectangle exit_button = { 400, 650, 207, 92 };
+
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
-			isMenuClosed = true;
-			UnloadTexture(menu);
+			if (CheckCollisionPointRec(mousePos, play_button))
+			{
+				isMenuClosed = true;
+				UnloadTexture(menu);
+				UnloadTexture(button_play);
+				UnloadTexture(button_exit);
+			}
+			if (CheckCollisionPointRec(mousePos, exit_button))
+			{
+
+				CloseWindow();
+			}
+
 		}
 	}
 	if (isMenuClosed)
