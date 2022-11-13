@@ -4,6 +4,8 @@
 #include "Product.h"
 #include "Bank.h"
 #include <iostream>
+#include <vector>
+#include "csv.h"
 
 static Vector2 coordinates[30] = {
 	// Berlin
@@ -71,7 +73,7 @@ static Vector2 coordinates[30] = {
 class Factory
 {
 public:
-	Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn, Vector2 coordinatesIn);
+	Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn, float xIn, float yIn);
 
 	void buyFactory();
 	void upgradeFactory();
@@ -91,7 +93,7 @@ public:
 	void setProduct(Product product);
 	Product getProduct();
 
-	void setCoordinates(Vector2 coordinates);
+	void setCoordinates(float x, float y);
 	Vector2 getCoordinates();
 
 private:

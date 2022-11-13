@@ -159,6 +159,7 @@
   <ItemGroup>
     <ClInclude Include="Bank.h" />
     <ClInclude Include="Country.h" />
+    <ClInclude Include="csv.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Product.h" />

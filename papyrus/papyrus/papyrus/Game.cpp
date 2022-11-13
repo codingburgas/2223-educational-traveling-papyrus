@@ -101,6 +101,7 @@ void Game::Draw(Texture2D menu, Texture2D map)
 void drawCities(Vector2 coordinates[])
 {
 	// Display the cities as white dots with black borders
+
 	for (int i = 0; i < 30; i++)
 	{
 		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
