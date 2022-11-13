@@ -31,11 +31,41 @@ void Game::Tick(Texture2D menu, Texture2D map)
 
 void Game::Update()
 {
+	// Set money tick 1 second
+	static int moneyTick = 100;
+
 	Bank& bank = Bank::getInstance();
 
-	if (IsKeyDown(KEY_ENTER))
+	static Factory factories[2] =
 	{
-		berlin.buyFactory();
+		{ "berlin", 1000, 100, Product("car", 500, 300), { 555,560 } },
+		{ "frankfurt", 1000, 100, Product("food", 500, 300), { 485,625 } }
+	};
+
+
+	for (int i = 0; i < 2; i++)
+	{
+		//check if mouse is clicked
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			if (isCityClicked(coordinates) == true)
+			{
+				factories[i].buyFactory();
+			}
+		}
+
+	}
+
+
+	// Countdown money tick until it hits zero
+	if (moneyTick == 0)
+	{
+		bank.increaseBalance();
+		moneyTick = 100;
+	}
+	else
+	{
+		moneyTick -= 1;
 	}
 }
 
@@ -62,9 +92,9 @@ void Game::Draw(Texture2D menu, Texture2D map)
 
 		// Place the cites on the map
 		drawCities(coordinates);
-		
+
 		// Display score
-		DrawText(TextFormat("%i", bank.getBalance()), 1090, 400, 40, RAYWHITE);
+		DrawText(TextFormat("%i", bank.getBalance()), 1100, 70, 40, BLACK);
 	}
 }
 
@@ -86,18 +116,15 @@ bool isCityClicked(Vector2 coordinates[])
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
 
-	// Check if the left mouse button is clicked
-	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+	std::cout << mousePos.x << " " << mousePos.y << std::endl;
+
+	// Check if mouse collides with the cities
+	for (int i = 0; i < 30; i++)
 	{
-		// Check if mouse collides with the cities
-		for (int i = 0; i < 30; i++)
+		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
 		{
-			if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
-			{
-				return true;
-			}
+			return true;
 		}
-		return false;
 	}
 	return false;
 }

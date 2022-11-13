@@ -1,27 +1,37 @@
 #include "Factory.h"
 
 
-Factory::Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn)
+Factory::Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn, Vector2 coordinatesIn)
 	:
 	name(nameIn),
 	buyPrice(buyPriceIn),
 	upgradePrice(upgradePriceIn),
-	product(productIn)
+	product(productIn),
+	coordinates(coordinatesIn)
 {
 
 }
 
 void Factory::buyFactory()
 {
-	// Check if factory is owned 
+	Bank& bank = Bank::getInstance();
+	// Check if factory is owned
 	if (!this->isOwned)
 	{
-		Bank& bank = Bank::getInstance();
-		bank.setBalance(bank.getBalance() - this->buyPrice);
-		this->isOwned = true;
+		// Check if you have enough money
+		if (bank.getBalance() >= this->buyPrice)
+		{
+			bank.setBalance(bank.getBalance() - this->buyPrice);
+			this->isOwned = true;
 
-		// Increase the income with the price of the product
-		bank.setIncome(product.getSellingPrice() - product.getProductionCost());
+			// Increase the income with the price of the product
+			bank.setIncome(product.getSellingPrice() - product.getProductionCost());
+		}
+		else
+		{
+			std::cout << "Not enoguh cash";
+		}
+
 	}
 	else
 	{
@@ -84,4 +94,14 @@ void Factory::setProduct(Product product)
 Product Factory::getProduct()
 {
 	return this->product;
+}
+
+void Factory::setCoordinates(Vector2 coordinates)
+{
+	this->coordinates = coordinates;
+}
+
+Vector2 Factory::getCoordinates()
+{
+	return this->coordinates;
 }

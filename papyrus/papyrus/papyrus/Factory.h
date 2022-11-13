@@ -8,7 +8,7 @@
 static Vector2 coordinates[30] = {
 	// Berlin
 	{555,560},
-	// Frankfurt|
+	// Frankfurt
 	{485,625},
 	// Hamburg
 	{505,543},
@@ -71,7 +71,7 @@ static Vector2 coordinates[30] = {
 class Factory
 {
 public:
-	Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn);
+	Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn, Vector2 coordinatesIn);
 
 	void buyFactory();
 	void upgradeFactory();
@@ -91,6 +91,9 @@ public:
 	void setProduct(Product product);
 	Product getProduct();
 
+	void setCoordinates(Vector2 coordinates);
+	Vector2 getCoordinates();
+
 private:
 	int buyPrice;
 	int upgradePrice;
@@ -99,7 +102,7 @@ private:
 	int tier = 0;
 	bool isOwned = false;
 
+	Vector2 coordinates;
+
 	Product product;
 };
-
-static Factory berlin("berlin", 1000, 100, car);

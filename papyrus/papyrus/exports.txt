@@ -29,3 +29,4 @@ id|name|buyPrice|upgradePrice| product(name, productionCost)|x|y
 28|riga|machinery|3000|710|450
 29|rome|machinery|2500|563|833
 30|milan|car|16000|492|744
+=

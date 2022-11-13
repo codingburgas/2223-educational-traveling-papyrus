@@ -7,6 +7,7 @@ public:
 	void operator=(Bank const&) = delete;
 
 	static Bank& getInstance();
+
 	void increaseBalance();
 	void increaseIncome(int incomeIn);
 

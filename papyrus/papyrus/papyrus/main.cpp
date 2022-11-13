@@ -12,23 +12,10 @@ int main()
 	Texture2D map = LoadTexture("../Images/map.png");
 	Texture2D menu = LoadTexture("../Images/menu.png");
 
-	// Set money tick 1 second
-	int moneyTick = 1000;
-	Bank& bank = Bank::getInstance();
 
 	while (!game.GameShouldClose())
 	{	
   		game.Tick(menu, map);
 
-		// Countdown money tick until it hits zero
-		if (moneyTick == 0)
-		{
-			bank.increaseBalance();
-			moneyTick = 1000;
-		}
-		else
-		{
-			moneyTick -= 1;
-		}
 	}
 }
