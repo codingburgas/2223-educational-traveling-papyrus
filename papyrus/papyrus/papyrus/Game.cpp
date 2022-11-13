@@ -36,17 +36,9 @@ void Game::Update()
 
 	Bank& bank = Bank::getInstance();
 
-	/*
-	static Factory factories[2] =
+	/*for (int i = 0; i < 2; i++)
 	{
-		{ "berlin", 1000, 100, Product("car", 500), { 555,560 } },
-		{ "frankfurt", 1000, 100, Product("food", 500), { 485,625 } }
-	};
-
-
-	for (int i = 0; i < 2; i++)
-	{
-		//check if mouse is clicked
+		check if mouse is clicked
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 			if (isCityClicked(coordinates) == true)
@@ -55,7 +47,7 @@ void Game::Update()
 			}
 		}
 
-	} */
+	}*/
 
 
 	// Countdown money tick until it hits zero
