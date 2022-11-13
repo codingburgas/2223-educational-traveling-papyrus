@@ -1,6 +1,5 @@
 #include "Factory.h"
 
-
 Factory::Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product productIn, float xIn, float yIn)
 	:
 	name(nameIn),
@@ -16,22 +15,36 @@ std::vector<Factory> createFactory()
 {
 	std::vector<Factory> factories;
 
-	io::CSVReader<8> in("exports.txt");
-	in.read_header(io::ignore_extra_column, "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
+	io::CSVReader<7> in("../exports.txt");
+	in.read_header(io::ignore_extra_column,"name", "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
 
 	std::string name;
 	int buyPrice;
 	int upgradePrice;
 	std::string productName;
 	int productCost;
-	float x; float y;
+	float x;
+	float y;
 
 	while (in.read_row(name, buyPrice, upgradePrice, productName, productCost, x, y))
 	{
-		factories.push_back(Factory (name, buyPrice, upgradePrice, Product(productName, 1000, productCost), x, y));
+		factories.push_back(Factory (name, buyPrice, upgradePrice, Product(productName, productCost), x, y));
 	}
-} 
 
+	return factories;
+}
+
+std::vector<Vector2> getCoordinates(std::vector<Factory> factories)
+{
+	std::vector<Vector2> coordinates;
+
+	for (int i = 0; i < factories.size(); i++)
+	{
+		coordinates.push_back({ factories[i].getCoordinates().x, factories[i].getCoordinates().y });
+	}
+
+	return coordinates;
+}
 
 void Factory::buyFactory()
 {

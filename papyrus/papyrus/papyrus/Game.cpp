@@ -21,11 +21,11 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick(Texture2D menu, Texture2D map)
+void Game::Tick(Texture2D menu, Texture2D map, std::vector<Factory> factories, std::vector<Vector2> coordinates)
 {
 	BeginDrawing();
 	Update();
-	Draw(menu, map);
+	Draw(menu, map, coordinates);
 	EndDrawing();
 }
 
@@ -36,10 +36,11 @@ void Game::Update()
 
 	Bank& bank = Bank::getInstance();
 
+	/*
 	static Factory factories[2] =
 	{
-		{ "berlin", 1000, 100, Product("car", 500, 300), { 555,560 } },
-		{ "frankfurt", 1000, 100, Product("food", 500, 300), { 485,625 } }
+		{ "berlin", 1000, 100, Product("car", 500), { 555,560 } },
+		{ "frankfurt", 1000, 100, Product("food", 500), { 485,625 } }
 	};
 
 
@@ -54,7 +55,7 @@ void Game::Update()
 			}
 		}
 
-	}
+	} */
 
 
 	// Countdown money tick until it hits zero
@@ -69,7 +70,7 @@ void Game::Update()
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map)
+void Game::Draw(Texture2D menu, Texture2D map, std::vector<Vector2> coordinates)
 {
 	Bank& bank = Bank::getInstance();
 
@@ -86,7 +87,6 @@ void Game::Draw(Texture2D menu, Texture2D map)
 	}
 	if (isMenuClosed)
 	{
-
 		//Display map
 		DrawTexture(map, 0, 0, RAYWHITE);
 
@@ -98,18 +98,18 @@ void Game::Draw(Texture2D menu, Texture2D map)
 	}
 }
 
-void drawCities(Vector2 coordinates[])
+void drawCities(std::vector<Vector2> coordinates)
 {
 	// Display the cities as white dots with black borders
 
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < coordinates.size(); i++)
 	{
 		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
 		DrawCircle(coordinates[i].x, coordinates[i].y, 6, RAYWHITE);
 	}
 }
 
-bool isCityClicked(Vector2 coordinates[])
+bool isCityClicked(std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
 
@@ -120,7 +120,7 @@ bool isCityClicked(Vector2 coordinates[])
 	std::cout << mousePos.x << " " << mousePos.y << std::endl;
 
 	// Check if mouse collides with the cities
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < coordinates.size(); i++)
 	{
 		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
 		{

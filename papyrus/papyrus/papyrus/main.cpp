@@ -12,10 +12,12 @@ int main()
 	Texture2D map = LoadTexture("../Images/map.png");
 	Texture2D menu = LoadTexture("../Images/menu.png");
 
+	static std::vector<Factory> factories = createFactory();
+
+	static std::vector<Vector2> coordinates = getCoordinates(factories);
 
 	while (!game.GameShouldClose())
 	{	
-  		game.Tick(menu, map);
-
+  		game.Tick(menu, map, factories, coordinates);
 	}
 }

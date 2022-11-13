@@ -1,10 +1,10 @@
 #include "Product.h"
 
-Product::Product(std::string typeIn, int sellingPriceIn, int productionCostIn)
+Product::Product(std::string typeIn, int productionCostIn)
 	:
 	type(typeIn),
-	sellingPrice(sellingPriceIn),
-	productionCost(productionCostIn)
+	productionCost(productionCostIn),
+	sellingPrice(1.2 * productionCostIn)
 {
 
 }

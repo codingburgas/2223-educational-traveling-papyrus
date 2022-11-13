@@ -4,7 +4,7 @@
 class Product
 {
 public:
-	Product(std::string typeIn, int sellingPriceIn, int productionCostIn);
+	Product(std::string typeIn, int productionCostIn);
 
 	void setType(std::string type);
 	std::string getType();
@@ -20,5 +20,3 @@ private:
 	int sellingPrice;
 	int productionCost;
 };
-
-static Product car("car", 500, 300);
