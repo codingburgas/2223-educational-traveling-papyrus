@@ -17,7 +17,7 @@ public:
 	void Tick(Texture2D menu, Texture2D map, std::vector<Factory> factories, std::vector<Vector2> coordinates);
 
 private:
-	void Update();
+	void Update(std::vector<Vector2> coordinates, std::vector<Factory> factories);
 	void Draw(Texture2D menu, Texture2D map, std::vector<Vector2> coordinates);
 };
 

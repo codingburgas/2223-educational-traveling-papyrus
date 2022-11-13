@@ -24,31 +24,29 @@ bool Game::GameShouldClose() const
 void Game::Tick(Texture2D menu, Texture2D map, std::vector<Factory> factories, std::vector<Vector2> coordinates)
 {
 	BeginDrawing();
-	Update();
+	Update(coordinates, factories);
 	Draw(menu, map, coordinates);
 	EndDrawing();
 }
 
-void Game::Update()
+void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory> factories)
 {
 	// Set money tick 1 second
 	static int moneyTick = 100;
 
 	Bank& bank = Bank::getInstance();
 
-	/*for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 30; i++)
 	{
-		check if mouse is clicked
+		// Check if mouse is clicked
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
-			if (isCityClicked(coordinates) == true)
+			if (isCityClicked(coordinates))
 			{
-				factories[i].buyFactory();
+				factories.at(i).buyFactory();
 			}
 		}
-
-	}*/
-
+	}
 
 	// Countdown money tick until it hits zero
 	if (moneyTick == 0)

@@ -49,6 +49,7 @@ std::vector<Vector2> getCoordinates(std::vector<Factory> factories)
 void Factory::buyFactory()
 {
 	Bank& bank = Bank::getInstance();
+
 	// Check if factory is owned
 	if (!this->isOwned)
 	{
