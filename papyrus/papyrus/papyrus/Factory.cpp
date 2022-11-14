@@ -6,7 +6,7 @@ Factory::Factory(std::string nameIn, int buyPriceIn, int upgradePriceIn, Product
 	buyPrice(buyPriceIn),
 	upgradePrice(upgradePriceIn),
 	product(productIn),
-	coordinates{xIn, yIn}
+	coordinates{ xIn, yIn }
 {
 
 }
@@ -16,7 +16,7 @@ std::vector<Factory> createFactory()
 	std::vector<Factory> factories;
 
 	io::CSVReader<7> in("../exports.txt");
-	in.read_header(io::ignore_extra_column,"name", "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
+	in.read_header(io::ignore_extra_column, "name", "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
 
 	std::string name;
 	int buyPrice;
@@ -28,7 +28,7 @@ std::vector<Factory> createFactory()
 
 	while (in.read_row(name, buyPrice, upgradePrice, productName, productCost, x, y))
 	{
-		factories.push_back(Factory (name, buyPrice, upgradePrice, Product(productName, productCost), x, y));
+		factories.push_back(Factory(name, buyPrice, upgradePrice, Product(productName, productCost), x, y));
 	}
 
 	return factories;
@@ -51,27 +51,28 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (!this->isOwned)
+	if (this->getOwned() == false)
 	{
 		// Check if you have enough money
-		if (bank.getBalance() >= this->buyPrice)
+		if (bank.getBalance() >= this->getBuyPrice())
 		{
-			bank.setBalance(bank.getBalance() - this->buyPrice);
-			this->isOwned = true;
+			bank.setBalance(bank.getBalance() - this->getBuyPrice());
+			this->setOwned(true);
 
 			// Increase the income with the price of the product
-			bank.setIncome(product.getSellingPrice() - product.getProductionCost());
+			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
+			std::cout << "bought";
 		}
 		else
 		{
 			std::cout << "Not enoguh cash";
 		}
-
 	}
 	else
 	{
 		std::cout << "Already owned";
 	}
+
 }
 
 void Factory::upgradeFactory()
@@ -140,4 +141,14 @@ void Factory::setCoordinates(float x, float y)
 Vector2 Factory::getCoordinates()
 {
 	return this->coordinates;
+}
+
+void Factory::setOwned(bool own)
+{
+	this->isOwned = own;
+}
+
+bool Factory::getOwned()
+{
+	return this->isOwned;
 }

@@ -19,7 +19,7 @@ int main()
 	static std::vector<Vector2> coordinates = getCoordinates(factories);
 
 	while (!game.GameShouldClose())
-	{	
-  		game.Tick(menu, map, button_exit, button_play, factories, coordinates);
+	{
+		game.Tick(menu, map, button_exit, button_play, factories, coordinates);
 	}
 }
