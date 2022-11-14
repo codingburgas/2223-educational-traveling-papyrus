@@ -33,9 +33,6 @@ public:
 	void setCoordinates(float x, float y);
 	Vector2 getCoordinates();
 
-	void setOwned(bool own);
-	bool getOwned();
-
 private:
 	int buyPrice;
 	int upgradePrice;

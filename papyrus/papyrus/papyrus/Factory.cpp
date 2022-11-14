@@ -51,28 +51,18 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->getOwned() == false)
+	if (!this->isOwned)
 	{
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getBuyPrice())
 		{
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
-			this->setOwned(true);
+			this->isOwned = true;
 
 			// Increase the income with the price of the product
 			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
-			std::cout << "bought";
-		}
-		else
-		{
-			std::cout << "Not enoguh cash";
 		}
 	}
-	else
-	{
-		std::cout << "Already owned";
-	}
-
 }
 
 void Factory::upgradeFactory()
@@ -141,14 +131,4 @@ void Factory::setCoordinates(float x, float y)
 Vector2 Factory::getCoordinates()
 {
 	return this->coordinates;
-}
-
-void Factory::setOwned(bool own)
-{
-	this->isOwned = own;
-}
-
-bool Factory::getOwned()
-{
-	return this->isOwned;
 }
