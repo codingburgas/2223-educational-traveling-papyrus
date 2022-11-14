@@ -89,7 +89,6 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 			}
 			if (CheckCollisionPointRec(mousePos, exit_button))
 			{
-
 				CloseWindow();
 			}
 
@@ -114,13 +113,16 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories
 
 	for (int i = 0; i < coordinates.size(); i++)
 	{
-		/*if (factories[i].getOwned() == true)
+		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
+
+		if (factories[i].isOwned)
 		{
 			DrawCircle(coordinates[i].x, coordinates[i].y, 6, GREEN);
-		}*/
-
-		DrawCircle(coordinates[i].x, coordinates[i].y, 6, RAYWHITE);
-		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
+		}
+		else
+		{
+			DrawCircle(coordinates[i].x, coordinates[i].y, 6, RAYWHITE);
+		}
 	}
 }
 

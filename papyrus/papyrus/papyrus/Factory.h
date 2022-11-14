@@ -33,13 +33,14 @@ public:
 	void setCoordinates(float x, float y);
 	Vector2 getCoordinates();
 
+	bool isOwned = false;
+
 private:
 	int buyPrice;
 	int upgradePrice;
 
 	std::string name;
 	int tier = 0;
-	bool isOwned = false;
 
 	Vector2 coordinates;
 
