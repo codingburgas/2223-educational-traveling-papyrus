@@ -15,7 +15,7 @@ std::vector<Factory> createFactory()
 {
 	std::vector<Factory> factories;
 
-	io::CSVReader<7> in("exports.txt");
+	io::CSVReader<7> in("../exports.txt");
 	in.read_header(io::ignore_extra_column, "name", "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
 
 	std::string name;
