@@ -84,7 +84,7 @@ void Factory::upgradeFactory()
 				bank.setBalance(bank.getBalance() - this->getUpgradePrice());
 
 				this->setTier(getTier() + 1);
-
+				this->maxSpeed -= 50;
 
 				bank.setIncome(bank.getIncome() * 1.3);
 				this->setUpgradePrice(this->getUpgradePrice() * 1.5);

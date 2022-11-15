@@ -49,6 +49,23 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 			factories.at(CheckClickedCity(coordinates)).upgradeFactory();
 		}
 	}
+
+	for (int i = 0; i < 30; i++)
+	{
+		if (factories[i].isOwned == true)
+		{
+			if (factories[i].productionSpeed <= 0)
+			{
+				factories[i].productionSpeed = factories[i].maxSpeed;
+
+				bank.increaseBalance();
+			}
+			else
+			{
+				factories[i].productionSpeed -= 1;
+			}
+		}
+	}
 }
 
 void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Vector2> coordinates, std::vector<Factory> factories)

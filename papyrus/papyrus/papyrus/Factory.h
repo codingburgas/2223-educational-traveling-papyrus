@@ -34,7 +34,8 @@ public:
 	Vector2 getCoordinates();
 
 	bool isOwned = false;
-
+	int maxSpeed = 500;
+	int productionSpeed = maxSpeed;
 
 private:
 	int buyPrice;
