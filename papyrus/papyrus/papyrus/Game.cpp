@@ -31,9 +31,6 @@ void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 
 void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
-	// Set money tick 1 second
-	static int moneyTick = 100;
-
 	Bank& bank = Bank::getInstance();
 
 	// Check if mouse is clicked
@@ -45,16 +42,12 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 		}
 	}
 
-
-	// Countdown money tick until it hits zero
-	if (moneyTick == 0)
+	if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 	{
-		bank.increaseBalance();
-		moneyTick = 100;
-	}
-	else
-	{
-		moneyTick -= 1;
+		if (isCityClicked(coordinates))
+		{
+			factories.at(CheckClickedCity(coordinates)).upgradeFactory();
+		}
 	}
 }
 

@@ -35,6 +35,7 @@ public:
 
 	bool isOwned = false;
 
+
 private:
 	int buyPrice;
 	int upgradePrice;
@@ -45,6 +46,7 @@ private:
 	Vector2 coordinates;
 
 	Product product;
+
 };
 
 std::vector<Factory> createFactory();

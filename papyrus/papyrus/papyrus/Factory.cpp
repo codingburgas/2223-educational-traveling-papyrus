@@ -51,11 +51,12 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (!this->isOwned)
+	if (this->isOwned == false)
 	{
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getBuyPrice())
 		{
+
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
 			this->isOwned = true;
 
@@ -67,7 +68,30 @@ void Factory::buyFactory()
 
 void Factory::upgradeFactory()
 {
+	Bank& bank = Bank::getInstance();
 
+	// Check if factory is owned
+	if (this->isOwned == true)
+	{
+		// Check if you have enough money
+		std::cout << "owned ";
+		if (bank.getBalance() >= this->getUpgradePrice())
+		{
+			std::cout << "enough cash ";
+			//check tier of the factory
+			if (this->getTier() <= 3)
+			{
+				bank.setBalance(bank.getBalance() - this->getUpgradePrice());
+
+				this->setTier(getTier() + 1);
+
+
+				bank.setIncome(bank.getIncome() * 1.3);
+				this->setUpgradePrice(this->getUpgradePrice() * 1.5);
+				std::cout << "upgrade bought";
+			}
+		}
+	}
 }
 
 //setter and getters
