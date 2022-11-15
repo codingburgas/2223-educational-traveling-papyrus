@@ -14,7 +14,7 @@ public:
 	~Game() noexcept;
 
 	bool GameShouldClose() const;
-	void Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Factory> &factories, std::vector<Vector2> coordinates);
+	void Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates);
 
 private:
 	void Update(std::vector<Vector2> coordinates, std::vector<Factory> &factories);
@@ -23,5 +23,9 @@ private:
 
 void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories);
 
-bool isCityClicked(std::vector<Vector2> coordinates);
-int CheckClickedCity(std::vector<Vector2> coordinates);
+void isCityClicked(std::vector<Vector2> coordinates, std::vector<Factory>& factories);
+//int CheckClickedCity(std::vector<Vector2> coordinates, std::vector<Factory>& factories);
+
+void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates);
+
+int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinate);

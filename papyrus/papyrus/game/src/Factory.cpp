@@ -60,6 +60,7 @@ void Factory::buyFactory()
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
 			this->isOwned = true;
 
+
 			// Increase the income with the price of the product
 			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
 		}

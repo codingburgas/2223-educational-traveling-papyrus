@@ -14,6 +14,8 @@ int main()
 	Texture2D button_exit = LoadTexture("../Images/button_exit.png");
 	Texture2D button_play = LoadTexture("../Images/button_play.png");
 
+	//Font setback = LoadFont("../setbackt.ttf");
+
 	static std::vector<Factory> factories = createFactory();
 
 	static std::vector<Vector2> coordinates = getCoordinates(factories);

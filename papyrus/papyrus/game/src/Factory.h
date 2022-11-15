@@ -34,6 +34,7 @@ public:
 	Vector2 getCoordinates();
 
 	bool isOwned = false;
+	bool isSelected = false;
 	int maxSpeed = 500;
 	int productionSpeed = maxSpeed;
 

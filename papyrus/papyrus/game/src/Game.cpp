@@ -36,18 +36,14 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	// Check if mouse is clicked
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
-		if (isCityClicked(coordinates))
-		{
-			factories.at(CheckClickedCity(coordinates)).buyFactory();
-		}
+		isCityClicked(coordinates, factories);
+		//factories[checkSelectedCity(factories, coordinates)].buyFactory();
 	}
 
 	if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
 	{
-		if (isCityClicked(coordinates))
-		{
-			factories.at(CheckClickedCity(coordinates)).upgradeFactory();
-		}
+		isCityClicked(coordinates, factories);
+		//factories[checkSelectedCity(factories, coordinates)].upgradeFactory();
 	}
 
 	for (int i = 0; i < 30; i++)
@@ -112,8 +108,11 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		// Place the cites on the map
 		drawCities(coordinates, factories);
 
-		// Display score
-		DrawText(TextFormat("%i", bank.getBalance()), 1100, 70, 40, BLACK);
+		// Display balance
+		DrawText(TextFormat("Euros %i", bank.getBalance()),70, 64, 50, BLACK);
+
+		//Display info
+		drawInfo(factories, coordinates);
 	}
 }
 
@@ -136,7 +135,7 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories
 	}
 }
 
-bool isCityClicked(std::vector<Vector2> coordinates)
+void isCityClicked(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
 	Vector2 mousePos;
 
@@ -149,27 +148,48 @@ bool isCityClicked(std::vector<Vector2> coordinates)
 	{
 		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
 		{
-			return true;
+			factories[i].isSelected = true;
 		}
 	}
-	return false;
 }
 
-int CheckClickedCity(std::vector<Vector2> coordinates)
+void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
 {
-	Vector2 mousePos;
-
-	// Get the positions of the mouse
-	mousePos.x = GetMouseX();
-	mousePos.y = GetMouseY();
-
-	// Check if mouse collides with the cities
 	for (int i = 0; i < coordinates.size(); i++)
 	{
-		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
+		if (factories[i].isSelected)
+		{
+			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 50, BLACK);
+			DrawText("Statistics", 1305, 186, 60, BLACK);
+			DrawText("Income", 1160, 303, 55, BLACK);
+			DrawText("Country", 1137, 430, 55, BLACK);
+			DrawText("Buy", 1260, 780, 65, BLACK);
+			DrawText(TextFormat("%s", factories[i].getName()), 200, 200, 60, BLACK);
+			DrawText("Product", 1127, 537, 60, BLACK);
+		}
+		else
+		{
+			DrawText("Level", 1070, 69, 50, BLACK);
+			DrawText("Statistics", 1305, 186, 60, BLACK);
+			DrawText("Income", 1160, 303, 55, BLACK);
+			DrawText("Country", 1137, 430, 55, BLACK);
+			DrawText("Buy", 1260, 780, 65, BLACK);
+			DrawText("Product", 1127, 537, 60, BLACK);
+		}
+	}
+}
+
+int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+{
+	for (int i = 0; i < coordinates.size(); i++)
+	{
+		if (factories[i].isSelected)
 		{
 			return i;
 		}
+		else
+		{
+			isCityClicked(coordinates, factories);
+		}
 	}
-	return -1;
-}
+} 
