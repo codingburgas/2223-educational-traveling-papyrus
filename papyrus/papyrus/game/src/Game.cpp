@@ -7,7 +7,7 @@ Game::Game(int width, int height, int fps, std::string title)
 	assert(!GetWindowHandle());	//If assertion triggers : Window is already opened
 	SetTargetFPS(fps);
 	InitWindow(width, height, title.c_str());
-	ToggleFullscreen();
+	//ToggleFullscreen();
 }
 
 Game::~Game() noexcept

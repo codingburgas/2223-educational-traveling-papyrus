@@ -2,15 +2,25 @@
 
 int main()
 {
-	// Open a window
-	const int screenWidth = 1920;
-	const int screenHeight = 1080;
+	// Note: make corrections to coordinates with diferent monitor sizes
 
-	Game game(screenWidth, screenHeight, 60, "GEOGRAPHY");
 
-	// Background texture
-	Texture2D map = LoadTexture("../Images/map.png");
-	Texture2D menu = LoadTexture("../Images/menu.png");
+	int currentMonitor(GetCurrentMonitor());
+	Vector2 currentResolution = { GetMonitorWidth(currentMonitor), GetMonitorHeight(currentMonitor) };
+
+	// Create a window
+	Game game(currentResolution.x, currentResolution.y, 60, "Papyrus");
+
+	// Load background texture
+	Image menuImage = LoadImage("../Images/menu.png");
+	ImageResize(&menuImage, GetMonitorWidth(currentMonitor), GetMonitorHeight(currentMonitor));
+	Texture2D menu = LoadTextureFromImage(menuImage);
+	UnloadImage(menuImage);
+	
+	Image mapImage = LoadImage("../Images/map.png");
+	ImageResize(&mapImage, GetMonitorWidth(currentMonitor), GetMonitorHeight(currentMonitor));
+	Texture2D map = LoadTextureFromImage(mapImage);
+
 	Texture2D button_exit = LoadTexture("../Images/button_exit.png");
 	Texture2D button_play = LoadTexture("../Images/button_play.png");
 
