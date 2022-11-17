@@ -23,6 +23,8 @@ int main()
 
 	Texture2D button_exit = LoadTexture("../Images/button_exit.png");
 	Texture2D button_play = LoadTexture("../Images/button_play.png");
+	Texture2D bold_button_exit = LoadTexture("../Images/bold_button_exit.png");
+	Texture2D bold_button_play = LoadTexture("../Images/bold_button_play.png");
 
 	//Font setback = LoadFont("../setbackt.ttf");
 
@@ -32,6 +34,6 @@ int main()
 
 	while (!game.GameShouldClose())
 	{
-		game.Tick(menu, map, button_exit, button_play, factories, coordinates);
+		game.Tick(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates);
 	}
 }

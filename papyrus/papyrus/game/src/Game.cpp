@@ -21,11 +21,11 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 {
 	BeginDrawing();
 	Update(coordinates, factories);
-	Draw(menu, map, button_exit, button_play, coordinates, factories);
+	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories);
 	EndDrawing();
 }
 
@@ -76,7 +76,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, std::vector<Vector2> coordinates, std::vector<Factory> factories)
+void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory> factories)
 {
 	Vector2 mousePos;
 
@@ -92,11 +92,32 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	{
 		// Display menu
 		DrawTexture(menu, 0, 0, RAYWHITE);
-		DrawTexture(button_exit, 400, 650, RAYWHITE);
-		DrawTexture(button_play, 400, 500, RAYWHITE);
 
 		Rectangle play_button = { 400, 500, 207, 92 };
 		Rectangle exit_button = { 400, 650, 207, 92 };
+
+		if (CheckCollisionPointRec(mousePos, play_button))
+		{
+
+			DrawTexture(bold_button_play, 400, 500, RAYWHITE);
+			DrawTexture(button_exit, 400, 650, RAYWHITE);
+		}
+		if (CheckCollisionPointRec(mousePos, exit_button))
+		{
+			DrawTexture(bold_button_exit, 400, 650, RAYWHITE);
+			DrawTexture(button_play, 400, 500, RAYWHITE);
+		}
+		if (!CheckCollisionPointRec(mousePos, play_button))
+		{
+			DrawTexture(button_play, 400, 500, RAYWHITE);
+		}
+		if (!CheckCollisionPointRec(mousePos, exit_button))
+		{
+			DrawTexture(button_exit, 400, 650, RAYWHITE);
+
+		}
+
+		
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
