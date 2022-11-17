@@ -84,7 +84,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
 
-	Bank& bank = Bank::getInstance();
+	//Bank& bank = Bank::getInstance();
 
 	ClearBackground(BLACK);
 
@@ -124,7 +124,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		drawCities(coordinates, factories);
 
 		// Display balance
-		DrawText(TextFormat("Euros %i", bank.getBalance()), 70, 64, 50, BLACK);
+		
 
 		//Display info
 		drawInfo(factories, coordinates);
@@ -153,6 +153,7 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories
 int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
+
 	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
@@ -189,26 +190,21 @@ bool isMouseOnCity(std::vector<Vector2> coordinates)
 
 void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
 {
+	Bank& bank = Bank::getInstance();
+
+	DrawText(TextFormat("Euros %i", bank.getBalance()), 1370, 69, 55, BLACK);
+	DrawText("Level", 1070, 69, 55, BLACK);
+	DrawText("Statistics", 1305, 186, 55, BLACK);
+	DrawText("Income", 1127, 300, 55, BLACK);
+	DrawText("City", 1127, 430, 55, BLACK);
+	DrawText("Product", 1127, 560, 55, BLACK);
+
 	for (int i = 0; i < coordinates.size(); i++)
 	{
 		if (factories[i].isSelected)
 		{
-			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 50, BLACK);
-			DrawText("Statistics", 1305, 186, 60, BLACK);
-			DrawText("Income", 1160, 303, 55, BLACK);
-			DrawText("Country", 1137, 430, 55, BLACK);
-			DrawText("Buy", 1260, 780, 65, BLACK);
-			DrawText(factories[i].getName().c_str(), 200, 200, 60, BLACK);
-			DrawText("Product", 1127, 537, 60, BLACK);
-		}
-		else
-		{
-			DrawText("Level", 1070, 69, 50, BLACK);
-			DrawText("Statistics", 1305, 186, 60, BLACK);
-			DrawText("Income", 1160, 303, 55, BLACK);
-			DrawText("Country", 1137, 430, 55, BLACK);
-			DrawText("Buy", 1260, 780, 65, BLACK);
-			DrawText("Product", 1127, 537, 60, BLACK);
+			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 55, BLACK);
+			DrawText(factories[i].getName().c_str(), 1500, 430, 55, BLACK);
 		}
 	}
 }
