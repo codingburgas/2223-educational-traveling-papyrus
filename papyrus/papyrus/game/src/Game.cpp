@@ -7,7 +7,7 @@ Game::Game(int width, int height, int fps, std::string title)
 	assert(!GetWindowHandle());	//If assertion triggers : Window is already opened
 	SetTargetFPS(fps);
 	InitWindow(width, height, title.c_str());
-	//ToggleFullscreen();
+	ToggleFullscreen();
 }
 
 Game::~Game() noexcept
@@ -33,18 +33,30 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 {
 	Bank& bank = Bank::getInstance();
 
+	int selectedIndex = 0;
+
 	// Check if mouse is clicked
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
-		isCityClicked(coordinates, factories);
-		//factories[checkSelectedCity(factories, coordinates)].buyFactory();
+		if (isMouseOnCity(coordinates))
+		{
+			for (int i = 0; i < 30; i++)
+			{
+				factories[i].isSelected = false;
+			}
+
+			factories[checkSelectedCity(factories, coordinates)].isSelected = true;
+		}
+		else
+		{
+			for (int i = 0; i < 30; i++)
+			{
+				factories[i].isSelected = false;
+			}
+		}
 	}
 
-	if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
-	{
-		isCityClicked(coordinates, factories);
-		//factories[checkSelectedCity(factories, coordinates)].upgradeFactory();
-	}
+
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -73,6 +85,8 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	mousePos.y = GetMouseY();
 
 	Bank& bank = Bank::getInstance();
+
+	ClearBackground(BLACK);
 
 	if (!isMenuClosed)
 	{
@@ -109,7 +123,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		drawCities(coordinates, factories);
 
 		// Display balance
-		DrawText(TextFormat("Euros %i", bank.getBalance()),70, 64, 50, BLACK);
+		DrawText(TextFormat("Euros %i", bank.getBalance()), 70, 64, 50, BLACK);
 
 		//Display info
 		drawInfo(factories, coordinates);
@@ -135,7 +149,25 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories
 	}
 }
 
-void isCityClicked(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
+int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+{
+	Vector2 mousePos;
+	// Get the positions of the mouse
+	mousePos.x = GetMouseX();
+	mousePos.y = GetMouseY();
+
+	for (int i = 0; i < coordinates.size(); i++)
+	{
+		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
+		{
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+bool isMouseOnCity(std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
 
@@ -143,14 +175,15 @@ void isCityClicked(std::vector<Vector2> coordinates, std::vector<Factory>& facto
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
 
-	// Check if mouse collides with the cities
 	for (int i = 0; i < coordinates.size(); i++)
 	{
 		if (CheckCollisionPointCircle(mousePos, coordinates[i], 8))
 		{
-			factories[i].isSelected = true;
+			return true;
 		}
 	}
+
+	return false;
 }
 
 void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
@@ -164,7 +197,7 @@ void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
 			DrawText("Income", 1160, 303, 55, BLACK);
 			DrawText("Country", 1137, 430, 55, BLACK);
 			DrawText("Buy", 1260, 780, 65, BLACK);
-			DrawText(TextFormat("%s", factories[i].getName()), 200, 200, 60, BLACK);
+			DrawText(factories[i].getName().c_str(), 200, 200, 60, BLACK);
 			DrawText("Product", 1127, 537, 60, BLACK);
 		}
 		else
@@ -178,18 +211,3 @@ void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
 		}
 	}
 }
-
-int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
-{
-	for (int i = 0; i < coordinates.size(); i++)
-	{
-		if (factories[i].isSelected)
-		{
-			return i;
-		}
-		else
-		{
-			isCityClicked(coordinates, factories);
-		}
-	}
-} 

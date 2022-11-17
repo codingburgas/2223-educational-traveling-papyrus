@@ -23,9 +23,7 @@ private:
 
 void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories);
 
-void isCityClicked(std::vector<Vector2> coordinates, std::vector<Factory>& factories);
-//int CheckClickedCity(std::vector<Vector2> coordinates, std::vector<Factory>& factories);
-
 void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates);
 
 int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinate);
+bool isMouseOnCity(std::vector<Vector2> coordinates);
