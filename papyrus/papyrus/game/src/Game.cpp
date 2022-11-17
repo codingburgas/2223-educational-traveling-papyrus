@@ -109,6 +109,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 			}
 			if (CheckCollisionPointRec(mousePos, exit_button))
 			{
+				EndDrawing();
 				CloseWindow();
 			}
 
