@@ -1,4 +1,7 @@
 #include "Game.h"
+#define RAYGUI_IMPLEMENTATION
+
+#include <raygui.h>
 
 bool isMenuClosed = false;
 
@@ -23,6 +26,7 @@ bool Game::GameShouldClose() const
 
 void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 {
+	GuiEnable();
 	BeginDrawing();
 	Update(coordinates, factories);
 	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories);
@@ -31,13 +35,19 @@ void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 
 void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
+	// Get static instance of Bank
 	Bank& bank = Bank::getInstance();
 
-	int selectedIndex = 0;
+	Vector2 mousePos;
+
+	// Get the positions of the mouse
+	mousePos.x = GetMouseX();
+	mousePos.y = GetMouseY();
 
 	// Check if mouse is clicked
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
+		// Check if mouse coordinates align with city coordinates
 		if (isMouseOnCity(coordinates))
 		{
 			for (int i = 0; i < 30; i++)
@@ -51,12 +61,13 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 		{
 			for (int i = 0; i < 30; i++)
 			{
-				factories[i].isSelected = false;
+				if (!CheckCollisionPointRec(mousePos, { 1000, 0, 1950, 1100 }))
+				{
+					factories[i].isSelected = false;
+				}
 			}
 		}
 	}
-
-
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -145,7 +156,6 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		drawCities(coordinates, factories);
 
 		// Display balance
-		
 
 		//Display info
 		drawInfo(factories, coordinates);
@@ -209,7 +219,7 @@ bool isMouseOnCity(std::vector<Vector2> coordinates)
 	return false;
 }
 
-void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
+void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 {
 	Bank& bank = Bank::getInstance();
 
@@ -226,6 +236,16 @@ void drawInfo(std::vector<Factory> &factories, std::vector<Vector2> coordinates)
 		{
 			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 55, BLACK);
 			DrawText(factories[i].getName().c_str(), 1500, 430, 55, BLACK);
+
+			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
+			{
+				factories[i].buyFactory();
+			}
+
+			if (GuiButton({ 1550, 700, 200, 100 }, "UPGRADE"))
+			{
+				factories[i].upgradeFactory();
+			}
 		}
 	}
 }

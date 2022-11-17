@@ -9,6 +9,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\game\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\game\src\bank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -21,11 +24,11 @@
     <ClCompile Include="..\game\src\product.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\game\src\raygui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\game\src\bank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\product.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\game\src\raygui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
