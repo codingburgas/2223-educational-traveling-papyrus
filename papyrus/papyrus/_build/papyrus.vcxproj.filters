@@ -9,36 +9,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\game\src\Bank.cpp">
+    <ClCompile Include="..\game\src\bank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\Factory.cpp">
+    <ClCompile Include="..\game\src\factory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\Game.cpp">
+    <ClCompile Include="..\game\src\game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\Product.cpp">
+    <ClCompile Include="..\game\src\product.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\game\src\papyrus_main.cpp">
+    <ClCompile Include="..\game\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\game\src\Bank.h">
+    <ClInclude Include="..\game\src\bank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\csv.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\Factory.h">
+    <ClInclude Include="..\game\src\factory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\Game.h">
+    <ClInclude Include="..\game\src\game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\game\src\Product.h">
+    <ClInclude Include="..\game\src\product.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\game\src\raygui.h">
