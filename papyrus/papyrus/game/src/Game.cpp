@@ -259,6 +259,7 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 		{
 			DrawTextEx(Quando, TextFormat("%i", factories[i].getTier()), { 1220, 69 }, 60, 0, BLACK);
 			DrawTextEx(Quando, factories[i].getName().c_str(), { 1500, 430 }, 60, 0, BLACK);
+			
 
 			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
 			{
@@ -270,5 +271,7 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 				factories[i].upgradeFactory();
 			}
 		}
+
+		DrawTextEx(Quando, TextFormat("%i", bank.getIncome()), { 1500, 300 }, 60, 0, BLACK);
 	}
 }

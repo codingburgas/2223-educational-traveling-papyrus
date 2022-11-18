@@ -36,7 +36,7 @@ int Bank::getBalance()
 
 void Bank::setIncome(int income)
 {
-	this->income = income;
+	this->income += income;
 }
 
 int Bank::getIncome()
