@@ -44,6 +44,18 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
 
+	int mouseIncome = 10;
+
+	for (int i = 0; i < 30; i++)
+	{
+		if (factories[i].getIsOwned())
+		{
+			mouseIncome += 10;
+		}
+
+		mouseIncome += factories[i].getTier() * 30;
+	}
+
 	// Check if mouse is clicked
 	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 	{
@@ -66,6 +78,8 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 					factories[i].setIsSelected(false);
 				}
 			}
+
+			bank.increaseBalance(mouseIncome);
 		}
 	}
 

@@ -59,7 +59,7 @@ private:
 	bool isSelected = false;
 
 	int income = 0;
-	int maxSpeed = 500;
+	int maxSpeed = 400;
 	int productionSpeed = maxSpeed;
 
 	Vector2 coordinates;
