@@ -11,6 +11,8 @@ int main()
 	// Create a window
 	Game game(currentResolution.x, currentResolution.y, 60, "Papyrus");
 
+	Font Quando = LoadFontEx("../Quando-Regular.ttf", 60, 0 ,250);
+
 	// Load background texture
 	Image menuImage = LoadImage("../Images/menu.png");
 	ImageResize(&menuImage, GetMonitorWidth(currentMonitor), GetMonitorHeight(currentMonitor));
@@ -34,6 +36,6 @@ int main()
 
 	while (!game.GameShouldClose())
 	{
-		game.Tick(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates);
+		game.Tick(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates, Quando);
 	}
 }

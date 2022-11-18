@@ -24,12 +24,12 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando)
 {
 	GuiEnable();
 	BeginDrawing();
 	Update(coordinates, factories);
-	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories);
+	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories, Quando);
 	EndDrawing();
 }
 
@@ -87,7 +87,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories)
+void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando)
 {
 	Vector2 mousePos;
 
@@ -158,7 +158,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		// Display balance
 
 		//Display info
-		drawInfo(factories, coordinates);
+		drawInfo(factories, coordinates, Quando);
 	}
 }
 
@@ -219,30 +219,29 @@ bool isMouseOnCity(std::vector<Vector2> coordinates)
 	return false;
 }
 
-void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando)
 {
 	Bank& bank = Bank::getInstance();
-
-	DrawText(TextFormat("Euros %i", bank.getBalance()), 1370, 69, 55, BLACK);
-	DrawText("Level", 1070, 69, 55, BLACK);
-	DrawText("Statistics", 1305, 186, 55, BLACK);
-	DrawText("Income", 1127, 300, 55, BLACK);
-	DrawText("City", 1127, 430, 55, BLACK);
-	DrawText("Product", 1127, 560, 55, BLACK);
+	DrawTextEx(Quando, TextFormat("Euros %i", bank.getBalance()), { 1370, 69 }, 60, 0, BLACK);
+	DrawTextEx(Quando, "Level", { 1070, 69 }, 60, 0,  BLACK);
+	DrawTextEx(Quando, "Statistics", { 1345, 186 }, 60, 0,  BLACK);
+	DrawTextEx(Quando, "Income", { 1127, 300 }, 60, 0,  BLACK);
+	DrawTextEx(Quando, "City", { 1127, 430 }, 60, 0,  BLACK);
+	DrawTextEx(Quando, "Product", { 1127, 560 }, 60, 0,  BLACK);
 
 	for (int i = 0; i < coordinates.size(); i++)
 	{
 		if (factories[i].getIsSelected())
 		{
-			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 55, BLACK);
-			DrawText(factories[i].getName().c_str(), 1500, 430, 55, BLACK);
+			DrawTextEx(Quando, TextFormat("Level %i", factories[i].getTier()), { 1070, 69 }, 60, 0, BLACK);
+			DrawTextEx(Quando, factories[i].getName().c_str(), { 1500, 430 }, 60, 0, BLACK);
 
 			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
 			{
 				factories[i].buyFactory();
 			}
 
-			if (GuiButton({ 1550, 700, 200, 100 }, "UPGRADE"))
+			if (GuiButton({ 1600, 700, 200, 100 }, "UPGRADE"))
 			{
 				factories[i].upgradeFactory();
 			}
