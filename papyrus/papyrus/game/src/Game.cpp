@@ -87,7 +87,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory> factories)
+void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
 	Vector2 mousePos;
 
