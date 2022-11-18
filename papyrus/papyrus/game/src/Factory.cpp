@@ -51,14 +51,14 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->isOwned == false)
+	if (this->getIsOwned() == false)
 	{
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getBuyPrice())
 		{
 
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
-			this->isOwned = true;
+			this->setIsOwned(true);
 
 
 			// Increase the income with the price of the product
@@ -72,10 +72,9 @@ void Factory::upgradeFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->isOwned == true)
+	if (this->getIsOwned() == true)
 	{
 		// Check if you have enough money
-		std::cout << "owned ";
 		if (bank.getBalance() >= this->getUpgradePrice())
 		{
 			std::cout << "enough cash ";
@@ -85,18 +84,16 @@ void Factory::upgradeFactory()
 				bank.setBalance(bank.getBalance() - this->getUpgradePrice());
 
 				this->setTier(getTier() + 1);
-				this->maxSpeed -= 50;
+				this->setMaxSpeed(this->getMaxSpeed() - 50);
 
 				bank.setIncome(bank.getIncome() * 1.3);
 				this->setUpgradePrice(this->getUpgradePrice() * 1.5);
-				std::cout << "upgrade bought";
 			}
 		}
 	}
 }
 
 //setter and getters
-
 void Factory::setBuyPrice(int buyPrice)
 {
 	this->buyPrice = buyPrice;
@@ -156,4 +153,44 @@ void Factory::setCoordinates(float x, float y)
 Vector2 Factory::getCoordinates()
 {
 	return this->coordinates;
+}
+
+void Factory::setIsOwned(bool isOwned)
+{
+	this->isOwned = isOwned;
+}
+
+bool Factory::getIsOwned()
+{
+	return this->isOwned;
+}
+
+void Factory::setIsSelected(bool isSelected)
+{
+	this->isSelected = isSelected;
+}
+
+bool Factory::getIsSelected()
+{
+	return this->isSelected;
+}
+
+void Factory::setMaxSpeed(int maxSpeed)
+{
+	this->maxSpeed = maxSpeed;
+}
+
+int Factory::getMaxSpeed()
+{
+	return this->maxSpeed;
+}
+
+void Factory::setProductionSpeed(int productionSpeed)
+{
+	this->productionSpeed = productionSpeed;
+}
+
+int Factory::getProductionSpeed()
+{
+	return this->productionSpeed;
 }

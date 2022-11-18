@@ -52,10 +52,10 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 		{
 			for (int i = 0; i < 30; i++)
 			{
-				factories[i].isSelected = false;
+				factories[i].setIsSelected(false);
 			}
 
-			factories[checkSelectedCity(factories, coordinates)].isSelected = true;
+			factories[checkSelectedCity(factories, coordinates)].setIsSelected(true);
 		}
 		else
 		{
@@ -63,7 +63,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 			{
 				if (!CheckCollisionPointRec(mousePos, { 1000, 0, 1950, 1100 }))
 				{
-					factories[i].isSelected = false;
+					factories[i].setIsSelected(false);
 				}
 			}
 		}
@@ -71,17 +71,17 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 
 	for (int i = 0; i < 30; i++)
 	{
-		if (factories[i].isOwned == true)
+		if (factories[i].getIsOwned() == true)
 		{
-			if (factories[i].productionSpeed <= 0)
+			if (factories[i].getProductionSpeed() <= 0)
 			{
-				factories[i].productionSpeed = factories[i].maxSpeed;
+				factories[i].setProductionSpeed(factories[i].getMaxSpeed());
 
 				bank.increaseBalance();
 			}
 			else
 			{
-				factories[i].productionSpeed -= 1;
+				factories[i].setProductionSpeed(factories[i].getProductionSpeed() - 1);
 			}
 		}
 	}
@@ -170,7 +170,7 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories
 	{
 		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
 
-		if (factories[i].isOwned)
+		if (factories[i].getIsOwned())
 		{
 			DrawCircle(coordinates[i].x, coordinates[i].y, 6, GREEN);
 		}
@@ -232,7 +232,7 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 
 	for (int i = 0; i < coordinates.size(); i++)
 	{
-		if (factories[i].isSelected)
+		if (factories[i].getIsSelected())
 		{
 			DrawText(TextFormat("Level %i", factories[i].getTier()), 1070, 69, 55, BLACK);
 			DrawText(factories[i].getName().c_str(), 1500, 430, 55, BLACK);

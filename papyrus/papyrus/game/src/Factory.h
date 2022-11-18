@@ -33,10 +33,17 @@ public:
 	void setCoordinates(float x, float y);
 	Vector2 getCoordinates();
 
-	bool isOwned = false;
-	bool isSelected = false;
-	int maxSpeed = 500;
-	int productionSpeed = maxSpeed;
+	void setIsOwned(bool isOwned);
+	bool getIsOwned();
+
+	void setIsSelected(bool isSelected);
+	bool getIsSelected();
+	
+	void setMaxSpeed(int maxSpeed);
+	int getMaxSpeed();
+
+	void setProductionSpeed(int productionSpeed);
+	int getProductionSpeed();
 
 private:
 	int buyPrice;
@@ -44,6 +51,12 @@ private:
 
 	std::string name;
 	int tier = 0;
+
+	bool isOwned = false;
+	bool isSelected = false;
+
+	int maxSpeed = 0;
+	int productionSpeed = maxSpeed;
 
 	Vector2 coordinates;
 
