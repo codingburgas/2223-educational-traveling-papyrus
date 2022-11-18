@@ -162,22 +162,32 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	}
 }
 
-void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> factories)
+void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> &factories)
 {
 	// Display the cities as white dots with black borders
 
 	for (int i = 0; i < coordinates.size(); i++)
 	{
-		DrawCircle(coordinates[i].x, coordinates[i].y, 8, BLACK);
+		float radius = 6;
+		Color color = RAYWHITE;
 
 		if (factories[i].getIsOwned())
 		{
-			DrawCircle(coordinates[i].x, coordinates[i].y, 6, GREEN);
+			color = GREEN;
 		}
-		else
+
+		if (factories[i].getTier() > 1)
 		{
-			DrawCircle(coordinates[i].x, coordinates[i].y, 6, RAYWHITE);
+			color = ORANGE;
 		}
+
+		if ((i == checkSelectedCity(factories, coordinates)) || factories[i].getIsSelected())
+		{
+			radius = 8;
+		}
+
+		DrawCircle(coordinates[i].x, coordinates[i].y, radius + 2, BLACK);
+		DrawCircle(coordinates[i].x, coordinates[i].y, radius, color);
 	}
 }
 
