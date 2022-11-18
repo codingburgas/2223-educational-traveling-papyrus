@@ -45,6 +45,9 @@ public:
 	void setProductionSpeed(int productionSpeed);
 	int getProductionSpeed();
 
+	void setIncome(int income);
+	int getIncome();
+
 private:
 	int buyPrice;
 	int upgradePrice;
@@ -55,7 +58,8 @@ private:
 	bool isOwned = false;
 	bool isSelected = false;
 
-	int maxSpeed = 0;
+	int income = 0;
+	int maxSpeed = 500;
 	int productionSpeed = maxSpeed;
 
 	Vector2 coordinates;

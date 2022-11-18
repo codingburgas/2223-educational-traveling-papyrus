@@ -8,8 +8,8 @@ public:
 
 	static Bank& getInstance();
 
-	void increaseBalance();
-	void increaseIncome(int incomeIn);
+	void increaseBalance(int income);
+	void increaseIncome(int income);
 
 	void setBalance(int balance);
 	int getBalance();

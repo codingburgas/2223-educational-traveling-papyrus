@@ -13,15 +13,15 @@ Bank& Bank::getInstance()
 }
 
 // Increase balance with income
-void Bank::increaseBalance()
+void Bank::increaseBalance(int income)
 {
-	balance += income;
+	this->setBalance(this->getBalance() + income);
 }
 
 // Increase the income with set amount
-void Bank::increaseIncome(int incomeIn)
+void Bank::increaseIncome(int income)
 {
-	income += incomeIn;
+	this->setIncome(this->getIncome() + income);
 }
 
 void Bank::setBalance(int balance)

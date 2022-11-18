@@ -63,6 +63,7 @@ void Factory::buyFactory()
 
 			// Increase the income with the price of the product
 			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
+			this->setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
 		}
 	}
 }
@@ -87,6 +88,7 @@ void Factory::upgradeFactory()
 				this->setMaxSpeed(this->getMaxSpeed() - 50);
 
 				bank.setIncome(bank.getIncome() * 1.3);
+				this->setIncome(this->getIncome() * 1.3);
 				this->setUpgradePrice(this->getUpgradePrice() * 1.5);
 			}
 		}
@@ -193,4 +195,14 @@ void Factory::setProductionSpeed(int productionSpeed)
 int Factory::getProductionSpeed()
 {
 	return this->productionSpeed;
+}
+
+void Factory::setIncome(int income)
+{
+	this->income = income;
+}
+
+int Factory::getIncome()
+{
+	return this->income;
 }

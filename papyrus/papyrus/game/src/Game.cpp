@@ -77,7 +77,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 			{
 				factories[i].setProductionSpeed(factories[i].getMaxSpeed());
 
-				bank.increaseBalance();
+				bank.increaseBalance(factories[i].getIncome());
 			}
 			else
 			{
@@ -127,8 +127,6 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 			DrawTexture(button_exit, 400, 650, RAYWHITE);
 
 		}
-
-		
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
@@ -243,7 +241,7 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 	{
 		if (factories[i].getIsSelected())
 		{
-			DrawTextEx(Quando, TextFormat("Level %i", factories[i].getTier()), { 1070, 69 }, 60, 0, BLACK);
+			DrawTextEx(Quando, TextFormat("%i", factories[i].getTier()), { 1220, 69 }, 60, 0, BLACK);
 			DrawTextEx(Quando, factories[i].getName().c_str(), { 1500, 430 }, 60, 0, BLACK);
 
 			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
