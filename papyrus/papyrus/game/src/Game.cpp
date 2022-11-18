@@ -24,12 +24,12 @@ bool Game::GameShouldClose() const
 	return WindowShouldClose();
 }
 
-void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando)
+void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando, Font QuandoBig)
 {
 	GuiEnable();
 	BeginDrawing();
 	Update(coordinates, factories);
-	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories, Quando);
+	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories, Quando, QuandoBig);
 	EndDrawing();
 }
 
@@ -101,7 +101,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	}
 }
 
-void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando)
+void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando, Font QuandoBig)
 {
 	Vector2 mousePos;
 
@@ -123,22 +123,24 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 
 		if (CheckCollisionPointRec(mousePos, play_button))
 		{
-
-			DrawTexture(bold_button_play, 400, 500, RAYWHITE);
-			DrawTexture(button_exit, 400, 650, RAYWHITE);
+			DrawTextEx(QuandoBig, "Play", { 400, 500 }, 100, 0, RAYWHITE);
+			DrawRectangleRoundedLines({ 380, 490 , 225, 120 }, 0.2, 2, 3, RAYWHITE);
+			DrawTextEx(QuandoBig, "Exit", { 400, 650 }, 100, 0,  RAYWHITE);
 		}
 		if (CheckCollisionPointRec(mousePos, exit_button))
 		{
-			DrawTexture(bold_button_exit, 400, 650, RAYWHITE);
-			DrawTexture(button_play, 400, 500, RAYWHITE);
+			DrawTextEx(QuandoBig, "Play", { 400, 500 }, 100, 0, RAYWHITE);
+			DrawRectangleRoundedLines({ 380, 640 , 225, 120 }, 0.2, 2, 3, RAYWHITE);
+			DrawTextEx(QuandoBig, "Exit", { 400, 650 }, 100, 0, RAYWHITE);
 		}
 		if (!CheckCollisionPointRec(mousePos, play_button))
 		{
-			DrawTexture(button_play, 400, 500, RAYWHITE);
+			DrawTextEx(QuandoBig, "Play", { 400,500 }, 100, 0, RAYWHITE);
+
 		}
 		if (!CheckCollisionPointRec(mousePos, exit_button))
 		{
-			DrawTexture(button_exit, 400, 650, RAYWHITE);
+			DrawTextEx(QuandoBig, "Exit", { 400, 650 }, 100, 0, RAYWHITE);
 
 		}
 
