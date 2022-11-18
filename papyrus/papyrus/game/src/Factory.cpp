@@ -59,7 +59,7 @@ void Factory::buyFactory()
 
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
 			this->setIsOwned(true);
-
+			this->setTier(1);
 
 			// Increase the income with the price of the product
 			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
@@ -78,7 +78,6 @@ void Factory::upgradeFactory()
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getUpgradePrice())
 		{
-			std::cout << "enough cash ";
 			//check tier of the factory
 			if (this->getTier() <= 3)
 			{
