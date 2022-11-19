@@ -26,10 +26,11 @@ int main()
 
 	static std::vector<Factory> factories = createFactory();
 
-	static std::vector<Vector2> coordinates = getCoordinates(factories);
+	static std::vector<Vector2> coordinates = getCoordinates(factories);	
 
 	while (!game.GameShouldClose())
 	{
 		game.Tick(menuImage, mapImage, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates, Quando, QuandoBig);
 	}
+	
 }

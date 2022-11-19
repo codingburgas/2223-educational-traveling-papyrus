@@ -4,6 +4,36 @@
 #include <raygui.h>
 
 bool isMenuClosed = false;
+int mouseIncome = 10;
+
+//typedef struct
+//{
+//	float lifeTime;
+//}Timer;
+//
+//void startTimer(Timer* timer, float lifetime)
+//{
+//	if (timer != NULL)
+//	{
+//		timer->lifeTime = lifetime;
+//	}
+//}
+//
+//void updateTimer(Timer* timer)
+//{
+//	if (timer != NULL && timer->lifeTime > 0)
+//	{
+//		timer->lifeTime -= GetFrameTime();
+//	}
+//}
+//
+//bool timerDone(Timer* timer)
+//{
+//	if (timer != NULL)
+//	{
+//		return timer->lifeTime <= 0;
+//	}
+//}
 
 Game::Game(int width, int height, int fps, std::string title)
 {
@@ -28,13 +58,13 @@ void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 {
 	BeginDrawing();
 	GuiEnable();
-	Update(coordinates, factories);
+	Update(coordinates, factories, Quando);
 	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories, Quando, QuandoBig);
 	GuiDisable();
 	EndDrawing();
 }
 
-void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
+void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando)
 {
 	// Get static instance of Bank
 	Bank& bank = Bank::getInstance();
@@ -44,8 +74,6 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
-
-	int mouseIncome = 10;
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -100,6 +128,7 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 			}
 		}
 	}
+
 }
 
 void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando, Font QuandoBig)
@@ -109,7 +138,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
-
+	
 	//Bank& bank = Bank::getInstance();
 
 	ClearBackground(BLACK);
@@ -172,6 +201,12 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 
 		//Display info
 		drawInfo(factories, coordinates, Quando);
+
+		/*if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			anim(Quando, coordinates);
+		}*/
+		
 	}
 }
 
@@ -282,3 +317,38 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 		}
 	}
 }
+
+//void anim(Font Quando, std::vector<Vector2> coordinates)
+//{
+//	Vector2 mousePos;
+//
+//	// Get the positions of the mouse
+//	mousePos.x = GetMouseX();
+//	mousePos.y = GetMouseY();
+//
+//	static float textLife = 60.0f;
+//	static Timer textTimer = { 0 };
+//	static int j = 255;
+//	static float vertical = mousePos.y;
+//	static unsigned char opacity = (unsigned char)j;
+//
+//	if (mousePos.x >= 47 && mousePos.y >= 44 && mousePos.x <= 980 && mousePos.y <= 1018 && IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !isMouseOnCity(coordinates))
+//	{
+//		startTimer(&textTimer, textLife);
+//	}
+//
+//	updateTimer(&textTimer);
+//
+//	if (!timerDone(&textTimer))
+//	{
+//		DrawTextEx(Quando, TextFormat("+%i", mouseIncome), { mousePos.x, vertical }, 60, 0, Color{ 0,0,0,opacity });
+//
+//		j -= 2;
+//		vertical -= 2;
+//	}
+//	if (timerDone(&textTimer))
+//	{
+//		j = 255;
+//		vertical = mousePos.y;
+//	}
+//}
