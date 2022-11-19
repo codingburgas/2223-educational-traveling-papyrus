@@ -22,12 +22,13 @@ int main()
 	Texture2D bold_button_exit = LoadTexture("../Images/bold_button_exit.png");
 	Texture2D bold_button_play = LoadTexture("../Images/bold_button_play.png");
 
-	//Font setback = LoadFont("../setbackt.ttf");
-
+	// Create a static instance of vector of factories
 	static std::vector<Factory> factories = createFactory();
 
+	// Create static instace of all factories coordinates
 	static std::vector<Vector2> coordinates = getCoordinates(factories);	
 
+	// Create the game loop
 	while (!game.GameShouldClose())
 	{
 		game.Tick(menuImage, mapImage, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates, Quando, QuandoBig);
