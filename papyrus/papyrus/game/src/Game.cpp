@@ -26,10 +26,11 @@ bool Game::GameShouldClose() const
 
 void Game::Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando, Font QuandoBig)
 {
-	GuiEnable();
 	BeginDrawing();
+	GuiEnable();
 	Update(coordinates, factories);
 	Draw(menu, map, button_exit, button_play, bold_button_exit, bold_button_play, coordinates, factories, Quando, QuandoBig);
+	GuiDisable();
 	EndDrawing();
 }
 
@@ -71,15 +72,15 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 		}
 		else
 		{
-			for (int i = 0; i < 30; i++)
+			if (!CheckCollisionPointRec(mousePos, { 1000, 0, 1950, 1100 }))
 			{
-				if (!CheckCollisionPointRec(mousePos, { 1000, 0, 1950, 1100 }))
+				for (int i = 0; i < 30; i++)
 				{
 					factories[i].setIsSelected(false);
 				}
-			}
 
-			bank.increaseBalance(mouseIncome);
+				bank.increaseBalance(mouseIncome);
+			}
 		}
 	}
 
@@ -125,7 +126,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		{
 			DrawTextEx(QuandoBig, "Play", { 400, 500 }, 100, 0, RAYWHITE);
 			DrawRectangleRoundedLines({ 380, 490 , 225, 120 }, 0.2, 2, 3, RAYWHITE);
-			DrawTextEx(QuandoBig, "Exit", { 400, 650 }, 100, 0,  RAYWHITE);
+			DrawTextEx(QuandoBig, "Exit", { 400, 650 }, 100, 0, RAYWHITE);
 		}
 		if (CheckCollisionPointRec(mousePos, exit_button))
 		{
@@ -169,14 +170,12 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		// Place the cites on the map
 		drawCities(coordinates, factories);
 
-		// Display balance
-
 		//Display info
 		drawInfo(factories, coordinates, Quando);
 	}
 }
 
-void drawCities(std::vector<Vector2> coordinates, std::vector<Factory> &factories)
+void drawCities(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
 	// Display the cities as white dots with black borders
 
@@ -247,19 +246,21 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 {
 	Bank& bank = Bank::getInstance();
 	DrawTextEx(Quando, TextFormat("Euros %i", bank.getBalance()), { 1370, 69 }, 60, 0, BLACK);
-	DrawTextEx(Quando, "Level", { 1070, 69 }, 60, 0,  BLACK);
-	DrawTextEx(Quando, "Statistics", { 1345, 186 }, 60, 0,  BLACK);
-	DrawTextEx(Quando, "Income", { 1127, 300 }, 60, 0,  BLACK);
-	DrawTextEx(Quando, "City", { 1127, 430 }, 60, 0,  BLACK);
-	DrawTextEx(Quando, "Product", { 1127, 560 }, 60, 0,  BLACK);
+	DrawTextEx(Quando, "Level", { 1070, 69 }, 60, 0, BLACK);
+	DrawTextEx(Quando, TextFormat("%i", bank.getIncome()), { 1500, 300 }, 60, 0, BLACK);
+	DrawTextEx(Quando, "Statistics", { 1345, 186 }, 60, 0, BLACK);
+	DrawTextEx(Quando, "Income", { 1127, 300 }, 60, 0, BLACK);
+	DrawTextEx(Quando, "City", { 1127, 430 }, 60, 0, BLACK);
+	DrawTextEx(Quando, "Product", { 1127, 560 }, 60, 0, BLACK);
 
 	for (int i = 0; i < coordinates.size(); i++)
 	{
 		if (factories[i].getIsSelected())
 		{
 			DrawTextEx(Quando, TextFormat("%i", factories[i].getTier()), { 1220, 69 }, 60, 0, BLACK);
+			DrawTextEx(Quando, factories[i].getProduct().getType().c_str(), { 1500 , 550 }, 60, 0, BLACK);
 			DrawTextEx(Quando, factories[i].getName().c_str(), { 1500, 430 }, 60, 0, BLACK);
-			
+
 
 			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
 			{
@@ -271,7 +272,5 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 				factories[i].upgradeFactory();
 			}
 		}
-
-		DrawTextEx(Quando, TextFormat("%i", bank.getIncome()), { 1500, 300 }, 60, 0, BLACK);
 	}
 }
