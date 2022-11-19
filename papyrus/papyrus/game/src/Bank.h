@@ -20,6 +20,6 @@ public:
 private:
 	Bank();
 
-	int balance = 10000000; //needs to be changed
+	int balance = 1000000; //needs to be changed
 	int income = 0;
 };

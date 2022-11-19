@@ -95,6 +95,11 @@ void Factory::upgradeFactory()
 			}
 		}
 	}
+
+	if (this->getTier() > 3)
+	{
+		this->setUpgradePrice(INT_MAX);
+	}
 }
 
 //setter and getters

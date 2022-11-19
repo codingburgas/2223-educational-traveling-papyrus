@@ -3,9 +3,6 @@
 
 #include <raygui.h>
 
-bool isMenuClosed = false;
-int mouseIncome = 10;
-
 class popUpText
 {
 public:
@@ -14,7 +11,7 @@ public:
 	unsigned char opacity = (unsigned char)j;
 	int life = 50;
 };
-
+int mouseIncome = 10;
 
 Game::Game(int width, int height, int fps, std::string title)
 {
@@ -55,6 +52,8 @@ void Game::Update(std::vector<Vector2> coordinates, std::vector<Factory>& factor
 	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
+
+	mouseIncome = 10;
 
 	for (int i = 0; i < 30; i++)
 	{
@@ -119,7 +118,7 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 	// Get the positions of the mouse
 	mousePos.x = GetMouseX();
 	mousePos.y = GetMouseY();
-	
+
 	//Bank& bank = Bank::getInstance();
 
 	ClearBackground(BLACK);
@@ -183,15 +182,15 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		//Display info
 		drawInfo(factories, coordinates, Quando);
 
-
-		anim(Quando, coordinates);
+		popUp(Quando, coordinates);
 	}
 }
 
-void drawCities(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
+void Game::drawCities(std::vector<Vector2> coordinates, std::vector<Factory>& factories)
 {
-	// Display the cities as white dots with black borders
+	Bank& bank = Bank::getInstance();
 
+	// Display the cities as white dots with black borders
 	for (int i = 0; i < coordinates.size(); i++)
 	{
 		float radius = 6;
@@ -202,9 +201,34 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory>& factorie
 			color = GREEN;
 		}
 
-		if (factories[i].getTier() > 1)
+		if (factories[i].getTier() == 2)
 		{
 			color = ORANGE;
+		}
+
+		if (factories[i].getTier() == 3)
+		{
+			color = YELLOW;
+		}
+
+		if (factories[i].getTier() == 4)
+		{
+			color = PURPLE;
+		}
+
+		if (!factories[i].getIsOwned())
+		{
+			if (bank.getBalance() >= factories[i].getBuyPrice())
+			{
+				color = DARKGREEN;
+			}
+		}
+		else
+		{
+			if (bank.getBalance() >= factories[i].getUpgradePrice())
+			{
+				color = DARKGREEN;
+			}
 		}
 
 		if ((i == checkSelectedCity(factories, coordinates)) || factories[i].getIsSelected())
@@ -217,7 +241,7 @@ void drawCities(std::vector<Vector2> coordinates, std::vector<Factory>& factorie
 	}
 }
 
-int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
+int Game::checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
 
@@ -236,7 +260,7 @@ int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coor
 	return -1;
 }
 
-bool isMouseOnCity(std::vector<Vector2> coordinates)
+bool Game::isMouseOnCity(std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
 
@@ -255,7 +279,7 @@ bool isMouseOnCity(std::vector<Vector2> coordinates)
 	return false;
 }
 
-void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando)
+void Game::drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando)
 {
 	Bank& bank = Bank::getInstance();
 	DrawTextEx(Quando, TextFormat("Euros %i", bank.getBalance()), { 1370, 69 }, 60, 0, BLACK);
@@ -286,7 +310,15 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 			}
 			else
 			{
-				DrawTextEx(Quando, TextFormat("%i", factories[i].getUpgradePrice()), { 1550, 750 }, 60, 0, BLACK);
+				if (factories[i].getTier() != 4)
+				{
+					DrawTextEx(Quando, TextFormat("%i", factories[i].getUpgradePrice()), { 1550, 750 }, 60, 0, BLACK);
+				}
+				else
+				{
+					DrawTextEx(Quando, "Maxed out", { 1550, 750 }, 60, 0, BLACK);
+				}
+
 				if (GuiButton({ 1150, 700, 200, 100 }, "UPGRADE"))
 				{
 					factories[i].upgradeFactory();
@@ -296,7 +328,7 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 	}
 }
 
-void anim(Font Quando, std::vector<Vector2> coordinates)
+void Game::popUp(Font Quando, std::vector<Vector2> coordinates)
 {
 	Vector2 mousePos;
 
