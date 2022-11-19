@@ -260,16 +260,24 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 			DrawTextEx(Quando, TextFormat("%i", factories[i].getTier()), { 1220, 69 }, 60, 0, BLACK);
 			DrawTextEx(Quando, factories[i].getProduct().getType().c_str(), { 1500 , 550 }, 60, 0, BLACK);
 			DrawTextEx(Quando, factories[i].getName().c_str(), { 1500, 430 }, 60, 0, BLACK);
+			DrawTextEx(Quando, "Price", { 1550, 700 }, 60, 0, BLACK);
 
-
-			if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
+			if (!factories[i].getIsOwned())
 			{
-				factories[i].buyFactory();
+				DrawTextEx(Quando, TextFormat("%i", factories[i].getBuyPrice()), { 1550, 750 }, 60, 0, BLACK);
+
+				if (GuiButton({ 1150, 700, 200, 100 }, "BUY"))
+				{
+					factories[i].buyFactory();
+				}
 			}
-
-			if (GuiButton({ 1600, 700, 200, 100 }, "UPGRADE"))
+			else
 			{
-				factories[i].upgradeFactory();
+				DrawTextEx(Quando, TextFormat("%i", factories[i].getUpgradePrice()), { 1550, 750 }, 60, 0, BLACK);
+				if (GuiButton({ 1150, 700, 200, 100 }, "UPGRADE"))
+				{
+					factories[i].upgradeFactory();
+				}
 			}
 		}
 	}

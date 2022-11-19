@@ -51,19 +51,18 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->getIsOwned() == false)
+	if (!this->getIsOwned())
 	{
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getBuyPrice())
 		{
-
 			bank.setBalance(bank.getBalance() - this->getBuyPrice());
 			this->setIsOwned(true);
 			this->setTier(1);
 
 			// Increase the income with the price of the product
-			bank.setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
 			this->setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
+			bank.setIncome(+this->getIncome());
 		}
 	}
 }
@@ -73,7 +72,7 @@ void Factory::upgradeFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->getIsOwned() == true)
+	if (this->getIsOwned())
 	{
 		// Check if you have enough money
 		if (bank.getBalance() >= this->getUpgradePrice())
@@ -86,8 +85,12 @@ void Factory::upgradeFactory()
 				this->setTier(getTier() + 1);
 				this->setMaxSpeed(this->getMaxSpeed() - 50);
 
-				bank.setIncome(bank.getIncome() * 1.3);
+				bank.setIncome(-this->getIncome());
+
 				this->setIncome(this->getIncome() * 1.3);
+
+				bank.setIncome(+this->getIncome());
+
 				this->setUpgradePrice(this->getUpgradePrice() * 1.5);
 			}
 		}

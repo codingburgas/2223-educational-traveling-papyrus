@@ -27,5 +27,3 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 
 int checkSelectedCity(std::vector<Factory>& factories, std::vector<Vector2> coordinate);
 bool isMouseOnCity(std::vector<Vector2> coordinates);
-
-float setRadius(std::vector<Vector2> coordinates, std::vector<Factory> &factories);

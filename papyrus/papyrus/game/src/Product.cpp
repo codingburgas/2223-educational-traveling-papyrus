@@ -4,7 +4,7 @@ Product::Product(std::string typeIn, int productionCostIn)
 	:
 	type(typeIn),
 	productionCost(productionCostIn),
-	sellingPrice(1.2 * productionCostIn)
+	sellingPrice(2.2 * productionCostIn)
 {
 
 }
