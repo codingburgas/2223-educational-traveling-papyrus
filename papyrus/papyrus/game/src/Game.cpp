@@ -6,34 +6,15 @@
 bool isMenuClosed = false;
 int mouseIncome = 10;
 
-//typedef struct
-//{
-//	float lifeTime;
-//}Timer;
-//
-//void startTimer(Timer* timer, float lifetime)
-//{
-//	if (timer != NULL)
-//	{
-//		timer->lifeTime = lifetime;
-//	}
-//}
-//
-//void updateTimer(Timer* timer)
-//{
-//	if (timer != NULL && timer->lifeTime > 0)
-//	{
-//		timer->lifeTime -= GetFrameTime();
-//	}
-//}
-//
-//bool timerDone(Timer* timer)
-//{
-//	if (timer != NULL)
-//	{
-//		return timer->lifeTime <= 0;
-//	}
-//}
+class popUpText
+{
+public:
+	int vertical = -10;
+	int j = 255;
+	unsigned char opacity = (unsigned char)j;
+	int life = 50;
+};
+
 
 Game::Game(int width, int height, int fps, std::string title)
 {
@@ -202,11 +183,8 @@ void Game::Draw(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D 
 		//Display info
 		drawInfo(factories, coordinates, Quando);
 
-		/*if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-		{
-			anim(Quando, coordinates);
-		}*/
-		
+
+		anim(Quando, coordinates);
 	}
 }
 
@@ -318,37 +296,36 @@ void drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordinates,
 	}
 }
 
-//void anim(Font Quando, std::vector<Vector2> coordinates)
-//{
-//	Vector2 mousePos;
-//
-//	// Get the positions of the mouse
-//	mousePos.x = GetMouseX();
-//	mousePos.y = GetMouseY();
-//
-//	static float textLife = 60.0f;
-//	static Timer textTimer = { 0 };
-//	static int j = 255;
-//	static float vertical = mousePos.y;
-//	static unsigned char opacity = (unsigned char)j;
-//
-//	if (mousePos.x >= 47 && mousePos.y >= 44 && mousePos.x <= 980 && mousePos.y <= 1018 && IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !isMouseOnCity(coordinates))
-//	{
-//		startTimer(&textTimer, textLife);
-//	}
-//
-//	updateTimer(&textTimer);
-//
-//	if (!timerDone(&textTimer))
-//	{
-//		DrawTextEx(Quando, TextFormat("+%i", mouseIncome), { mousePos.x, vertical }, 60, 0, Color{ 0,0,0,opacity });
-//
-//		j -= 2;
-//		vertical -= 2;
-//	}
-//	if (timerDone(&textTimer))
-//	{
-//		j = 255;
-//		vertical = mousePos.y;
-//	}
-//}
+void anim(Font Quando, std::vector<Vector2> coordinates)
+{
+	Vector2 mousePos;
+
+	// Get the positions of the mouse
+	mousePos.x = GetMouseX();
+	mousePos.y = GetMouseY();
+
+	static std::vector<popUpText> popUps;
+
+	if (mousePos.x >= 47 && mousePos.y >= 44 && mousePos.x <= 980 && mousePos.y <= 1018 && IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !isMouseOnCity(coordinates))
+	{
+		popUpText newText;
+		popUps.push_back(newText);
+	}
+
+	for (int i = 0; i < popUps.size(); i++)
+	{
+		popUps[i].life -= 1;
+
+		if (popUps[i].life >= 0)
+		{
+			DrawTextEx(Quando, TextFormat("+%i", mouseIncome), { mousePos.x, mousePos.y + popUps[i].vertical }, 60, 0, Color{ 0,0,0,popUps[i].opacity });
+			popUps[i].j -= 10;
+			popUps[i].vertical -= 2;
+			popUps[i].opacity = (unsigned char)popUps[i].j;
+		}
+		if (popUps[i].life <= 0)
+		{
+			popUps.erase(popUps.begin() + i);
+		}
+	}
+}
