@@ -15,6 +15,7 @@
   - [Design](#design)
   - [Documentation](#doc)
 - [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
 
 <hr>
 
@@ -74,4 +75,4 @@ https://github.com/codingburgas/2122-the-games--adventures-team
 - [Elena Keserdzhieva](https://github.com/ERKeserdzhieva20) - Quality Assurance(QA)
 
 ## 🏆 Acknowledgements <a name="acknowledgements"></a>
-- [Stefan Ravinov](https://github.com/SORavninov19) - Our Mentor
+- [Stefan Ravninov](https://github.com/SORavninov19) - Our Mentor
