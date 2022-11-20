@@ -1,0 +1,25 @@
+var win32__joystick_8c =
+[
+    [ "_GLFWobjenumWin32", "struct___g_l_f_wobjenum_win32.html", "struct___g_l_f_wobjenum_win32" ],
+    [ "_GLFW_TYPE_AXIS", "win32__joystick_8c.html#a106797aadafb40536144108a327d7899", null ],
+    [ "_GLFW_TYPE_BUTTON", "win32__joystick_8c.html#a51c03f1b45c64281f526e735075248e1", null ],
+    [ "_GLFW_TYPE_POV", "win32__joystick_8c.html#a3af724408ec3bc4c86ecac8241cfa94d", null ],
+    [ "_GLFW_TYPE_SLIDER", "win32__joystick_8c.html#a3e46214f179e9569bbaaf7001c4a84cb", null ],
+    [ "GUID_POV", "win32__joystick_8c.html#ad705b5a7bc731dfc97fb0c68e19ec376", null ],
+    [ "GUID_RxAxis", "win32__joystick_8c.html#a1ec981550612e155078ee65c6331c037", null ],
+    [ "GUID_RyAxis", "win32__joystick_8c.html#a891842ba5fedbd93ae1917f1fab9cf00", null ],
+    [ "GUID_RzAxis", "win32__joystick_8c.html#ac9ea6aa114ab9e0c561ae38da64268f1", null ],
+    [ "GUID_Slider", "win32__joystick_8c.html#af300e58c35a975a286a25ef97451a4a7", null ],
+    [ "GUID_XAxis", "win32__joystick_8c.html#ad7e545cd90e961c82a9505d427b4dc7d", null ],
+    [ "GUID_YAxis", "win32__joystick_8c.html#afabae522e34742b0de98c5251e522a04", null ],
+    [ "GUID_ZAxis", "win32__joystick_8c.html#a11d0c3ef37335f3320e93ee1ca6c1d61", null ],
+    [ "IID_IDirectInput8W", "win32__joystick_8c.html#a4d04555ffcfbf4bec0bcda3d131213b1", null ],
+    [ "_GLFWobjenumWin32", "win32__joystick_8c.html#aef5f9a164492cc20fd00028a77f572b2", null ],
+    [ "_glfwDetectJoystickConnectionWin32", "win32__joystick_8c.html#a58cafa45ca625cc01aee93124c190b13", null ],
+    [ "_glfwDetectJoystickDisconnectionWin32", "win32__joystick_8c.html#a0075ab897c58609717fddb588970c268", null ],
+    [ "_glfwGetMappingNameWin32", "win32__joystick_8c.html#aec8097a90d10dc6b0add17992d97c372", null ],
+    [ "_glfwInitJoysticksWin32", "win32__joystick_8c.html#a3e920595135793177be13d7ad39d20b7", null ],
+    [ "_glfwPollJoystickWin32", "win32__joystick_8c.html#a6a66658744a32f38f830f0061f277981", null ],
+    [ "_glfwTerminateJoysticksWin32", "win32__joystick_8c.html#a219b355c48800354e45f6091d7b2e564", null ],
+    [ "_glfwUpdateGamepadGUIDWin32", "win32__joystick_8c.html#a148681c996ee9d03ca7be51de6360ee4", null ]
+];

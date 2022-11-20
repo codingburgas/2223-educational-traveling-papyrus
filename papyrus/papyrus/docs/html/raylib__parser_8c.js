@@ -1,0 +1,48 @@
+var raylib__parser_8c =
+[
+    [ "DefineInfo", "struct_define_info.html", "struct_define_info" ],
+    [ "StructInfo", "struct_struct_info.html", "struct_struct_info" ],
+    [ "AliasInfo", "struct_alias_info.html", "struct_alias_info" ],
+    [ "EnumInfo", "struct_enum_info.html", "struct_enum_info" ],
+    [ "FunctionInfo", "struct_function_info.html", "struct_function_info" ],
+    [ "_CRT_SECURE_NO_WARNINGS", "raylib__parser_8c.html#af08ec37a8c99d747fb60fa15bc28678b", null ],
+    [ "MAX_ALIASES_TO_PARSE", "raylib__parser_8c.html#a35dc6c545347d41018e6981f0187c379", null ],
+    [ "MAX_CALLBACKS_TO_PARSE", "raylib__parser_8c.html#a1e1ab5a33859d92324d9390cebfe444a", null ],
+    [ "MAX_DEFINES_TO_PARSE", "raylib__parser_8c.html#a5a26bffa580f916a2c6bc7908734e8d5", null ],
+    [ "MAX_ENUM_VALUES", "raylib__parser_8c.html#a50da91e4c8ab7a9cb903d20787bb93b2", null ],
+    [ "MAX_ENUMS_TO_PARSE", "raylib__parser_8c.html#a3c5faa5c6b0d0af3b4c8459a02ba9282", null ],
+    [ "MAX_FUNCS_TO_PARSE", "raylib__parser_8c.html#aa6c99b2e6f0a69e4de48d2cc806718ad", null ],
+    [ "MAX_FUNCTION_PARAMETERS", "raylib__parser_8c.html#a53bbfbe99d380b0ef86d6b5d20f4f409", null ],
+    [ "MAX_LINE_LENGTH", "raylib__parser_8c.html#af0f2173e3b202ddf5756531b4471dcb2", null ],
+    [ "MAX_STRUCT_FIELDS", "raylib__parser_8c.html#ac81be3932baad5613a86536dfebcc4bc", null ],
+    [ "MAX_STRUCTS_TO_PARSE", "raylib__parser_8c.html#a16fbc55a84b1c871a8cbe2291137e4b5", null ],
+    [ "AliasInfo", "raylib__parser_8c.html#a67c35d859f797d6384eddb99d771b31c", null ],
+    [ "DefineInfo", "raylib__parser_8c.html#a000102b5162b1e33c6fa01f48a933853", null ],
+    [ "EnumInfo", "raylib__parser_8c.html#a3846581dc3cde963133578d0a1bb6b9d", null ],
+    [ "FunctionInfo", "raylib__parser_8c.html#afa756ba33331711f73261a68a190631a", null ],
+    [ "StructInfo", "raylib__parser_8c.html#a85e55471bc221b9806e1d6be2d6cc0ab", null ],
+    [ "DefineType", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6", [
+      [ "UNKNOWN", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a6ce26a62afab55d7606ad4e92428b30c", null ],
+      [ "MACRO", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a3d1738a931468da77c233f1126436b81", null ],
+      [ "GUARD", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6afd663509c82fa82c5821a801229f54b1", null ],
+      [ "INT", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6afd5a5f51ce25953f3db2c7e93eb7864a", null ],
+      [ "INT_MATH", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a0cbfd21076d49075689dc18bf2e77584", null ],
+      [ "LONG", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6aaee055c4a5aba7d55774e4f1c01dacea", null ],
+      [ "LONG_MATH", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a58d0fea706bfc9dc0ed025ba85ba33b4", null ],
+      [ "FLOAT", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a9cf4a0866224b0bb4a7a895da27c9c4c", null ],
+      [ "FLOAT_MATH", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6ad875dad7379cd761e27ea7f4af83b80e", null ],
+      [ "DOUBLE", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a33465d1d419b1074fb259ef444609e92", null ],
+      [ "DOUBLE_MATH", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a1095bc3cef8963b8f5f6a4762cfe4bed", null ],
+      [ "CHAR", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a4618cf21306b3c647741afa7ebefcab8", null ],
+      [ "STRING", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6aee847e634a4297b274316de8a8ca9921", null ],
+      [ "COLOR", "raylib__parser_8c.html#aaf02d784666afb87971140123d2fcdb6a7a5ecb5193db2d5f258ae1abd33714b9", null ]
+    ] ],
+    [ "OutputFormat", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277", [
+      [ "DEFAULT", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277a88ec7d5086d2469ba843c7fcceade8a6", null ],
+      [ "JSON", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277aa5210511e3859748f136ab50c313ef05", null ],
+      [ "XML", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277a60018cf01f907998778170cb8db31c99", null ],
+      [ "LUA", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277a5a922e7d52f0f45d060f22d747c4dfcc", null ],
+      [ "CODE", "raylib__parser_8c.html#aeb712c6c6c0a8af0dfd79f451ecb9277a5e182a58d9e70e1ae8f4bcf357203f9f", null ]
+    ] ],
+    [ "main", "raylib__parser_8c.html#a0ddf1224851353fc92bfbff6f499fa97", null ]
+];

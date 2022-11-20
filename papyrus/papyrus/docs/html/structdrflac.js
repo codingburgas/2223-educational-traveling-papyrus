@@ -1,0 +1,25 @@
+var structdrflac =
+[
+    [ "_noBinarySearchSeek", "structdrflac.html#a6621f51540790fb1028990e58d67b5da", null ],
+    [ "_noBruteForceSeek", "structdrflac.html#a7c1e4d821f00a44f958c57ec1825b6da", null ],
+    [ "_noSeekTableSeek", "structdrflac.html#afbf95f837cda1547e31648956c465788", null ],
+    [ "_oggbs", "structdrflac.html#a4d053bc5c3d5997fb5aa57ed486be33e", null ],
+    [ "allocationCallbacks", "structdrflac.html#acbb32ceb21a3d676f585763c7523c868", null ],
+    [ "bitsPerSample", "structdrflac.html#a7171edaabeda9c472d5a9329d7f32fcc", null ],
+    [ "bs", "structdrflac.html#a6cbafadfdec413ab75efe2fbb157eee8", null ],
+    [ "channels", "structdrflac.html#a6e016a68a3187aab1af97fe7d2719f6d", null ],
+    [ "container", "structdrflac.html#afa8e720fd607f10a1b6d0aa52426b062", null ],
+    [ "currentFLACFrame", "structdrflac.html#aa9d3ef0dd6ec40ad5bfd10b2f02407cd", null ],
+    [ "currentPCMFrame", "structdrflac.html#ae76cb52fae538931af9208f17a48433c", null ],
+    [ "firstFLACFramePosInBytes", "structdrflac.html#adebf383439b4b4b6296e92a560e68c50", null ],
+    [ "maxBlockSizeInPCMFrames", "structdrflac.html#a87b16d0a16ac9f92901786116c9abd1f", null ],
+    [ "memoryStream", "structdrflac.html#ab68b04e306280680cf0dc6af98362253", null ],
+    [ "onMeta", "structdrflac.html#a6c558b33c91a829405d01cb1a49559af", null ],
+    [ "pDecodedSamples", "structdrflac.html#a253f4a5bc2c27f6758ff123279cb50dd", null ],
+    [ "pExtraData", "structdrflac.html#a1892c39a1c4e6372f1ff627725b5208b", null ],
+    [ "pSeekpoints", "structdrflac.html#a8109736bd2c564bec34fdfc578c91c4b", null ],
+    [ "pUserDataMD", "structdrflac.html#a583eb657fbec8f84a1e88753c6f39de2", null ],
+    [ "sampleRate", "structdrflac.html#ad2556454adc48659e9f15d9b2eb53993", null ],
+    [ "seekpointCount", "structdrflac.html#a4e58913b777387919567bff6ead5b7a1", null ],
+    [ "totalPCMFrameCount", "structdrflac.html#a928a3033601ed8e6e4bcdd5ffdd0d5b4", null ]
+];
