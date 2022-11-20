@@ -21,7 +21,6 @@ public:
 
 	// Controls the game loop
 	void Tick(Texture2D menu, Texture2D map, Texture2D button_exit, Texture2D button_play, Texture2D bold_button_exit, Texture2D bold_button_play, std::vector<Factory>& factories, std::vector<Vector2> coordinates, Font Quando, Font QuandoBig);
-
 private:
 	// Updates the logic of the game and checks for actions
 	void Update(std::vector<Vector2> coordinates, std::vector<Factory>& factories, Font Quando);
@@ -45,5 +44,6 @@ private:
 	bool isMouseOnCity(std::vector<Vector2> coordinates);
 
 	bool isMenuClosed = false;
+	bool gameShouldClose = false;
 };
 

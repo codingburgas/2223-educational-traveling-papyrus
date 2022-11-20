@@ -31,4 +31,12 @@ int main()
 		game.Tick(menuImage, mapImage, button_exit, button_play, bold_button_exit, bold_button_play, factories, coordinates, Quando, QuandoBig);
 	}
 	
+	UnloadFont(Quando);
+	UnloadFont(QuandoBig);
+	UnloadTexture(menuImage);
+	UnloadTexture(mapImage);
+	UnloadTexture(button_exit);
+	UnloadTexture(button_play);
+	UnloadTexture(bold_button_exit);
+	UnloadTexture(bold_button_play);
 }
