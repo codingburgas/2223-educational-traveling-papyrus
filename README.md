@@ -20,7 +20,9 @@
 <hr>
 
 ## 🔎 Description <a name="description"></a>
-NEEDS TO BE CHANGED
+Our goal is to create a tycoon game related to geography, using C++ and Raylib. The game lets you choose a city, in what you can buy your own factory, upgrade it and sell different products.
+We tried to create it in a way, so it’s a fun and interesting for everyone. Therefor people who are interested in economics can have good time while making up business tragedies and learn how to be patient in order to win in life. We want it to help develop knowledge related to economics.
+
 
 <hr>
 
