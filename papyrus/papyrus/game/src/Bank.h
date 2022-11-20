@@ -26,6 +26,6 @@ private:
 	// Create instance of a bank
 	Bank();
 
-	int balance = 50000; //needs to be changed
+	int balance = 50000;
 	int income = 0;
 };
