@@ -2,9 +2,6 @@
 
 int main()
 {
-	// Note: make corrections to coordinates with diferent monitor sizes
-	int currentMonitor(GetCurrentMonitor());
-
 	// Create a window
 	Game game(1920, 1080, 60, "Papyrus");
 
