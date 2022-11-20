@@ -64,7 +64,6 @@ https://github.com/codingburgas/2223-educational-traveling-papyrus
 - [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint)- Presentation
 - [Doxygen](https://doxygen.nl/manual/docblocks.html)- Documentation
 - [Excel](https://www.microsoft.com/en-us/microsoft-365/excel) - QA Documentation
-- [Word](https://www.microsoft.com/bg-bg/microsoft-365/word)- Documentation
 
 ## 📖 Authors <a name="authors"></a>
 *Everyone who has participated in making this project:*
