@@ -442,17 +442,21 @@ void Game::drawInfo(std::vector<Factory>& factories, std::vector<Vector2> coordi
 			{
 				if (factories[i].getTier() != 4)
 				{
+					if (GuiButton({ 1150, 700, 200, 100 }, "UPGRADE"))
+					{
+						factories[i].upgradeFactory();
+					}
 					DrawTextEx(Quando, TextFormat("%i", factories[i].getUpgradePrice()), { 1550, 750 }, 60, 0, BLACK);
 				}
 				else
 				{
+					if (GuiButton({ 1150, 700, 200, 100 }, "MAXED OUT"))
+					{
+						
+					}
 					DrawTextEx(Quando, "Maxed out", { 1550, 750 }, 60, 0, BLACK);
 				}
 
-				if (GuiButton({ 1150, 700, 200, 100 }, "UPGRADE"))
-				{
-					factories[i].upgradeFactory();
-				}
 			}
 		}
 	}

@@ -79,21 +79,21 @@ void Factory::buyFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (!this->getIsOwned())
+	if (!this->isOwned)
 	{
 		// Check if you have enough money
-		if (bank.getBalance() >= this->getBuyPrice())
+		if (bank.getBalance() >= this->buyPrice)
 		{
 			// Decrease the balance with the buy price of the factory
-			bank.setBalance(bank.getBalance() - this->getBuyPrice());
+			bank.setBalance(bank.getBalance() - this->buyPrice);
 
 			// Set ownership of the factory to true
-			this->setIsOwned(true);
-			this->setTier(1);
+			this->isOwned = true;
+			this->tier = 1;
 
 			// Increase the income with the price of the product
-			this->setIncome(this->getProduct().getSellingPrice() - this->getProduct().getProductionCost());
-			bank.setIncome(+this->getIncome());
+			this->income = this->product.getSellingPrice() - this->product.getProductionCost();
+			bank.setIncome(+this->income);
 		}
 	}
 }
@@ -107,31 +107,31 @@ void Factory::upgradeFactory()
 	Bank& bank = Bank::getInstance();
 
 	// Check if factory is owned
-	if (this->getIsOwned())
+	if (this->isOwned)
 	{
 		// Check if you have enough money
-		if (bank.getBalance() >= this->getUpgradePrice())
+		if (bank.getBalance() >= this->upgradePrice)
 		{
 			//check tier of the factory
-			if (this->getTier() <= 3)
+			if (this->tier <= 3)
 			{
 				// Decrease the balance with the upgrade price of the factory
-				bank.setBalance(bank.getBalance() - this->getUpgradePrice());
+				bank.setBalance(bank.getBalance() - this->upgradePrice);
 
 				// Increase the factory tier
-				this->setTier(getTier() + 1);
+				this->tier = this->tier + 1;
 
 				// Deacres the production speed of the factory
-				this->setMaxSpeed(this->getMaxSpeed() - 50);
+				this->maxSpeed = this->maxSpeed - 50;
 
 
 				// Increase the income
-				bank.setIncome(-this->getIncome());
-				this->setIncome(this->getIncome() * 1.3);
-				bank.setIncome(+this->getIncome());
+				bank.setIncome(-this->income);
+				this->income = this->income * 1.3;
+				bank.setIncome(+this->income);
 
 				// Increase the upgrade price
-				this->setUpgradePrice(this->getUpgradePrice() * 1.5);
+				this->upgradePrice = this->upgradePrice * 1.5;
 			}
 		}
 	}
