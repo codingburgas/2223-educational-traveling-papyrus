@@ -39,7 +39,7 @@ Git
 - Installing
 1. Clone the repo
 ```
-https://github.com/codingburgas/2122-the-games--adventures-team
+https://github.com/codingburgas/2223-educational-traveling-papyrus
 ```
 2. Open the .sln file
 3. Run the project!
