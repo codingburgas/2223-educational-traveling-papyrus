@@ -33,7 +33,7 @@ Download the latest release from the releases page.
 #### Compile from source <a name="compile"></a>
 - Prerequisites
 ```
-Code Editor(e.g. Visual Studio with Unity Development installed)
+Code Editor(e.g. Visual Studio)
 Git
 ```
 - Installing
