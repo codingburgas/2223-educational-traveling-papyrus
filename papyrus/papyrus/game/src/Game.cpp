@@ -46,7 +46,7 @@ Game::~Game() noexcept
  */
 bool Game::GameShouldClose() const
 {
-	return gameShouldClose;
+	return gameShouldClose || WindowShouldClose();
 }
 
 /**
