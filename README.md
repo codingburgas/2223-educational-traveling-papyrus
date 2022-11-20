@@ -63,7 +63,7 @@ https://github.com/codingburgas/2223-educational-traveling-papyrus
 - [Krita](https://krita.org/en/) - Menu background 
 
 ### Documentation <a name="doc"></a>
-- [Wiki](https://github.com/codingburgas/2122-the-games--adventures-team/wiki) - Everything you need to know about our project
+- [Wiki](https://github.com/codingburgas/2223-educational-traveling-papyrus/wiki) - Everything you need to know about our project
 - [PowerPoint](https://codingburgas-my.sharepoint.com/:p:/g/personal/erkeserdzhieva20_codingburgas_bg/EZQtI1m3wrVApD58A3dNAHcBpcQn_gcgqrv716-ZB5JBqA?e=dEchJk)- Presentation
 - [Doxygen](https://doxygen.nl/manual/docblocks.html)- Documentation
 - [Excel](https://codingburgas-my.sharepoint.com/:x:/g/personal/erkeserdzhieva20_codingburgas_bg/ETpY3dB4kERBvYvZI3gDYyIBuMhNsy8trfG6yB4xm6jMfw?e=ouRChn) - QA Documentation
