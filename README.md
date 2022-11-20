@@ -61,7 +61,7 @@ https://github.com/codingburgas/2223-educational-traveling-papyrus
 ### Design <a name="design"></a>
 - [Figma](https://www.figma.com/downloads/) - UI, Logo
 - [Krita](https://krita.org/en/) - Menu background 
-- 
+
 ### Documentation <a name="doc"></a>
 - [Wiki](https://github.com/codingburgas/2122-the-games--adventures-team/wiki) - Everything you need to know about our project
 - [PowerPoint](https://codingburgas-my.sharepoint.com/:p:/g/personal/erkeserdzhieva20_codingburgas_bg/EZQtI1m3wrVApD58A3dNAHcBpcQn_gcgqrv716-ZB5JBqA?e=dEchJk)- Presentation
