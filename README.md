@@ -1,6 +1,6 @@
 <p align="center">
-  <img height="500" width="500" src="papyrus/papyrus/Images/logoLight.png#gh-light-mode-only" alt="Logo"/>
-  <img height="500" width="500" src="papyrus/papyrus/Images/logoDark.png#gh-dark-mode-only" alt="Logo"/>
+  <img height="500" width="500" src="papyrus/papyrus/resources/Images/logoLight.png#gh-light-mode-only" alt="Logo"/>
+  <img height="500" width="500" src="papyrus/papyrus/resources/Images/logoDark.png#gh-dark-mode-only" alt="Logo"/>
 </p>
 
 <hr>
@@ -65,7 +65,7 @@ https://github.com/codingburgas/2223-educational-traveling-papyrus
 ### Documentation <a name="doc"></a>
 - [Wiki](https://github.com/codingburgas/2223-educational-traveling-papyrus/wiki) - Everything you need to know about our project
 - [PowerPoint](https://codingburgas-my.sharepoint.com/:p:/g/personal/erkeserdzhieva20_codingburgas_bg/EZQtI1m3wrVApD58A3dNAHcBpcQn_gcgqrv716-ZB5JBqA?e=dEchJk)- Presentation
-- [Doxygen](https://ppdimitrakova20.github.io/papyrus.github.io/)- Documentation
+- [Doxygen](https://doxygen.nl)- Documentation
 - [Excel](https://codingburgas-my.sharepoint.com/:x:/g/personal/erkeserdzhieva20_codingburgas_bg/ETpY3dB4kERBvYvZI3gDYyIBuMhNsy8trfG6yB4xm6jMfw?e=ouRChn) - QA Documentation
 
 ## 📖 Authors <a name="authors"></a>
