@@ -31,7 +31,7 @@ std::vector<Factory> createFactory()
 	std::vector<Factory> factories;
 
 	// Read the file with factory info
-	io::CSVReader<7> in("../exports.txt");
+	io::CSVReader<7> in("../resources/exports.txt");
 	in.read_header(io::ignore_extra_column, "name", "buyPrice", "upgradePrice", "productName", "productCost", "x", "y");
 
 	std::string name;
