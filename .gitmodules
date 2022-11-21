@@ -1,0 +1,6 @@
+[submodule "doxygen-awesome-css"]
+	path = doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git
+[submodule "papyrus/papyrus/doxygen-awesome-css"]
+	path = papyrus/papyrus/doxygen-awesome-css
+	url = https://github.com/jothepro/doxygen-awesome-css.git
